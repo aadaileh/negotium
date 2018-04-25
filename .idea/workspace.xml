@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="" />
+    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,17 +26,17 @@
       <file leaf-file-name="MainServiceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="-561">
               <caret line="92" column="60" lean-forward="true" selection-start-line="92" selection-start-column="60" selection-end-line="92" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainServiceInterface.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainServiceInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+            <state relative-caret-position="238">
+              <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -57,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="351">
+              <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,6 +97,9 @@
       <replace>NEGOTIUM</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -114,10 +119,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" />
       </list>
     </option>
   </component>
@@ -134,6 +139,7 @@
     <option name="width" value="1400" />
     <option name="height" value="990" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -348,7 +354,7 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.2863248" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2751678" />
@@ -812,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -849,20 +848,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="-561">
           <caret line="92" column="60" lean-forward="true" selection-start-line="92" selection-start-column="60" selection-end-line="92" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
