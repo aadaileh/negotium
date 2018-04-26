@@ -108,7 +108,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         try {
             connection = dataSource.getConnection();
             statement = connection.createStatement();
-            String sql = "SELECT * " +
+            String sql = "SELECT *, users.id as table_users_id " +
                     "FROM credentials " +
                     "JOIN users ON credentials.id = users.credentials_id " +
                     "WHERE credentials.username = '" + credentials.getUsername() + "' " +
@@ -123,11 +123,9 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 user.setName(resultSet.getString("name"));
                 user.setSurname(resultSet.getString("surname"));
                 user.setEmail(resultSet.getString("email"));
-            }
-
-            //Set the timestamp user-last-logged-in when successfully logged in
-            if (user.isLoggedIn()){
-                //updateRecord(statement, user.getClientId());
+                user.setUserId(resultSet.getInt("table_users_id"));
+                user.setCvId(resultSet.getInt("cv_id"));
+                user.setCredentialsId(resultSet.getInt("credentials_id"));
             }
 
             return user;
@@ -145,8 +143,34 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         return user;
     }
 
+
+    public int createCvHeader(Header header) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        User user = new User();
+
+        try {
+            connection = dataSource.getConnection();
+
+            int cvId = insertIntoCv(header, connection);
+            updateUsers(header, connection, cvId);
+
+            return cvId;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return 0;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+
     private Long insertIntoCredentials(User user, Connection connection, String token) throws SQLException {
-        String credentialsStmt = "INSERT INTO `credentials` (`username`, `password`, `token`, `created_date_time`) " +
+        String credentialsStmt = "INSERT INTO credentials (username, password, token, created_date_time) " +
                 "VALUES (?,?,?,?)";
 
         PreparedStatement pStmtCredentials = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
@@ -174,7 +198,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
     private Long insertIntoUsers(User user, Connection connection, Long credentialsId) throws SQLException {
 
-        String usersStmt = "INSERT INTO `users` (`type`, `name`, `surname`, `email`, `tel`, `credentials_id`, `created_date_time`) " +
+        String usersStmt = "INSERT INTO users (type, name, surname, email, tel, credentials_id, created_date_time) " +
                 "VALUES ('job_seeker', ?, ?, ?, ?, ?, ?);";
 
         PreparedStatement pStmtUsers = connection.prepareStatement(usersStmt, Statement.RETURN_GENERATED_KEYS);
@@ -204,7 +228,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
     private Long insertIntoContactInformation(User user, Connection connection, Long usersId) throws SQLException {
 
-        String usersStmt = "INSERT INTO `contact_information` (`email`, `mobile`, `users_id`) " +
+        String usersStmt = "INSERT INTO contact_information (email, mobile, users_id) " +
                 "VALUES (?, ?, ?);";
 
         PreparedStatement pStmtContactInfo = connection.prepareStatement(usersStmt, Statement.RETURN_GENERATED_KEYS);
@@ -259,6 +283,42 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         }
 
         return credentialsId;
+    }
+
+
+    private int insertIntoCv(Header header, Connection connection) throws SQLException {
+        String credentialsStmt = "INSERT INTO cv (title, education, location, experience, users_id, created_date_time) " +
+                "VALUES (?,?,?,?,?,?)";
+
+        PreparedStatement pStmtCvHeader = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvHeader.setString(1, header.getTitle());
+        pStmtCvHeader.setString(2, header.getEducation());
+        pStmtCvHeader.setString(3, header.getLocation());
+        pStmtCvHeader.setString(4, header.getExperience());
+        pStmtCvHeader.setInt(5, header.getUsersId());
+        Date date = new Date(Calendar.getInstance().getTime().getTime());
+        pStmtCvHeader.setDate(6, date);
+
+        pStmtCvHeader.executeUpdate();
+
+        int cvId;
+        try (ResultSet generatedKeys = pStmtCvHeader.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                cvId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV-Header failed, no ID obtained.");
+            }
+        }
+
+        return cvId;
+    }
+
+    private void updateUsers(Header header, Connection connection, int cvId) throws SQLException {
+
+        String usersStmt = "UPDATE users SET cv_id = " + cvId + " WHERE id = " + header.getUsersId();
+        connection.createStatement().executeUpdate(usersStmt);
     }
 
     /**

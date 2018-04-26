@@ -112,7 +112,29 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     @Override
     public User login(@RequestBody Credentials credentials) throws SQLException {
-        return mainServiceImplentations.verifyCredentials(credentials);
+        User user = mainServiceImplentations.verifyCredentials(credentials);
+        return user;
+    }
+
+    /**
+     * Verify the credentials by checking the database table credentials.
+     *
+     * @return User if credentials are coorect, or NULL if not
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Verify the credentials of job-seekers and recruitment agencies")
+    @RequestMapping(value = "/negotium/api/create/cv-header/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public int createCvHeader(@RequestBody Header header) throws SQLException {
+        int cvId = mainServiceImplentations.createCvHeader(header);
+        return cvId;
     }
 
     @Override

@@ -15,6 +15,7 @@ public class User {
 
     private int userId;
     private int credentialsId;
+    private int cvId;
     private String type;
     private int valid;
     private String team_name;
@@ -41,6 +42,14 @@ public class User {
 
     public void setCredentialsId(int credentialsId) {
         this.credentialsId = credentialsId;
+    }
+
+    public int getCvId() {
+        return cvId;
+    }
+
+    public void setCvId(int cvId) {
+        this.cvId = cvId;
     }
 
     public String getType() {
