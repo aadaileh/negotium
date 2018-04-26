@@ -94,6 +94,16 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
         return credentialsId;
     }
 
+    @Override
+    public User login(Credentials credentials) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public User getUser(String username) {
+        return null;
+    }
+
     /**
      * Method to retrieve all transactions related to account based on the client-id. All
      * kind of transaction returned sorted according timestamp. If no results found, empty
