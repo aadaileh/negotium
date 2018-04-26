@@ -94,9 +94,25 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
         return credentialsId;
     }
 
+    /**
+     * Verify the credentials by checking the database table credentials.
+     *
+     * @return User if credentials are coorect, or NULL if not
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Verify the credentials of job-seekers and recruitment agencies")
+    @RequestMapping(value = "/negotium/api/login/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     @Override
-    public User login(Credentials credentials) throws SQLException {
-        return null;
+    public User login(@RequestBody Credentials credentials) throws SQLException {
+        return mainServiceImplentations.verifyCredentials(credentials);
     }
 
     @Override

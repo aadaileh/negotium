@@ -86,6 +86,65 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         }
     }
 
+    /**
+     * Method verifies the given credentials (username/card-id and password/pin)
+     * it returns the user object on success and empty user objecton failure.
+     *
+     * @param credentials username/card-id and password/pin
+     * @return user
+     *
+     * @throws SQLException
+     *
+     * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public User verifyCredentials(Credentials credentials) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        User user = new User();
+        ResultSet resultSet = null;
+        Statement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.createStatement();
+            String sql = "SELECT * " +
+                    "FROM credentials " +
+                    "JOIN users ON credentials.id = users.credentials_id " +
+                    "WHERE credentials.username = '" + credentials.getUsername() + "' " +
+                    "AND credentials.password = '" + credentials.getPassword() + "'";
+
+            resultSet = statement.executeQuery(sql);
+
+            user.setLoggedIn(false);
+
+            while (resultSet.next()) {
+                user.setLoggedIn(true);
+                user.setName(resultSet.getString("name"));
+                user.setSurname(resultSet.getString("surname"));
+                user.setEmail(resultSet.getString("email"));
+            }
+
+            //Set the timestamp user-last-logged-in when successfully logged in
+            if (user.isLoggedIn()){
+                //updateRecord(statement, user.getClientId());
+            }
+
+            return user;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+
+        } finally {
+            try { resultSet.close(); } catch (Exception e) { /* ignored */ }
+            try { statement.close(); } catch (Exception e) { /* ignored */ }
+            try { connection.close(); } catch (Exception e) { /* ignored */ }
+        }
+
+        return user;
+    }
+
     private Long insertIntoCredentials(User user, Connection connection, String token) throws SQLException {
         String credentialsStmt = "INSERT INTO `credentials` (`username`, `password`, `token`, `created_date_time`) " +
                 "VALUES (?,?,?,?)";
@@ -200,67 +259,6 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         }
 
         return credentialsId;
-    }
-
-    /**
-     * Method verifies the given credentials (username/card-id and password/pin)
-     * it returns the user object on success and empty user objecton failure.
-     *
-     * @param credentials username/card-id and password/pin
-     * @return user
-     *
-     * @throws SQLException
-     *
-     * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    public User verifyCredentials(Credentials credentials) throws SQLException {
-
-        dataSource = getDataSource();
-        Connection connection = null;
-        User user = new User();
-        ResultSet resultSet = null;
-        Statement statement = null;
-
-        try {
-            connection = dataSource.getConnection();
-            statement = connection.createStatement();
-            String sql = "SELECT * " +
-                    "FROM credentials " +
-                    "JOIN users ON credentials.id = users.credentials_id " +
-                    "WHERE credentials.username = '" + credentials.getUsername() + "' " +
-                    "AND credentials.password = '" + credentials.getPassword() + "'";
-
-            resultSet = statement.executeQuery(sql);
-
-            user.setLoggedIn(false);
-
-            while (resultSet.next()) {
-                user.setLoggedIn(true);
-                user.setName(resultSet.getString("name"));
-                user.setSurname(resultSet.getString("surname"));
-                user.setEmail(resultSet.getString("email"));
-                //user.setAddress(resultSet.getString("user_address"));
-                //user.setClientId(resultSet.getInt("id"));
-            }
-
-            //Set the timestamp user-last-logged-in when successfully logged in
-            if (user.isLoggedIn()){
-                //updateRecord(statement, user.getClientId());
-            }
-
-            return user;
-
-        } catch (Exception e) {
-
-            LOG.debug(e.getMessage());
-
-        } finally {
-            try { resultSet.close(); } catch (Exception e) { /* ignored */ }
-            try { statement.close(); } catch (Exception e) { /* ignored */ }
-            try { connection.close(); } catch (Exception e) { /* ignored */ }
-        }
-
-        return user;
     }
 
     /**
