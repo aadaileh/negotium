@@ -34,7 +34,7 @@ import java.sql.SQLException;
 @Component
 public abstract class CommonFactoryAbstract {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(MainServiceController.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(CommonFactoryAbstract.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
@@ -84,27 +84,6 @@ public abstract class CommonFactoryAbstract {
         }
 
         return dataSource;
-    }
-
-    /**
-     * Prepare Feign-client for communication with other services
-     * @param path
-     * @return FeignClient
-     *
-     *  @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    protected FeignClient getFeignClient(String path) {
-
-        FeignClient feignClient = Feign.builder()
-                .client(new OkHttpClient())
-                .encoder(new GsonEncoder())
-                .decoder(new GsonDecoder())
-                .requestInterceptor(getRequestInterceptor())
-                .logger(new Slf4jLogger(FeignClient.class))
-                .logLevel(feign.Logger.Level.FULL)
-                .target(FeignClient.class, feignUrl + path);
-
-        return feignClient;
     }
 
     /**

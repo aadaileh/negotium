@@ -70,7 +70,7 @@ public interface MainServiceInterface {
          *
          * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
          */
-        public FundTransferResponse transferFunds(@RequestBody FundTransferRequest fundTransferRequest);
+        public Response transferFunds(@RequestBody FundTransferRequest fundTransferRequest);
 
         /**
          * Method to deposit funds to the account. Usually the deposit process consists from the following steps:
@@ -82,7 +82,7 @@ public interface MainServiceInterface {
          *
          * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
          */
-        public FundTransferResponse deposit(@RequestBody FundTransferRequest fundTransferRequest);
+        public Response deposit(@RequestBody FundTransferRequest fundTransferRequest);
 
         /**
          * Method to withdraw money from ATM. Usually the withdrawal process consists from the following steps:
@@ -95,5 +95,5 @@ public interface MainServiceInterface {
          *
          * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
          */
-        public FundTransferResponse withdraw(@RequestBody FundTransferRequest fundTransferRequest);
+        public Response withdraw(@RequestBody FundTransferRequest fundTransferRequest);
 }

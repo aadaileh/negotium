@@ -1,6 +1,5 @@
 package com.negotium.Services.Main;
 
-import com.negotium.Clients.FeignClient;
 import com.negotium.DTOs.*;
 import com.negotium.Factory.CommonFactoryAbstract;
 import com.negotium.Services.Main.impl.MainServiceImplentations;
@@ -14,7 +13,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -117,14 +115,14 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     }
 
     /**
-     * Verify the credentials by checking the database table credentials.
+     * Save the CV Header
      *
-     * @return User if credentials are coorect, or NULL if not
+     * @return cv-id, the created CV-ID
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    @ApiOperation("Verify the credentials of job-seekers and recruitment agencies")
-    @RequestMapping(value = "/negotium/api/create/cv-header/",
+    @ApiOperation("Saves the (Header) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/header/",
             method = RequestMethod.POST)
     @ResponseBody
     @ApiResponses(value = {
@@ -132,9 +130,95 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public int createCvHeader(@RequestBody Header header) throws SQLException {
-        int cvId = mainServiceImplentations.createCvHeader(header);
-        return cvId;
+    public Response saveCvHeader(@RequestBody Header header) throws SQLException {
+        Response response = mainServiceImplentations.saveCvHeader(header);
+        response.setUserId(header.getUsersId());
+
+        return response;
+    }
+
+    /**
+     * Save the CV Personal Information
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (Personal Information) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/personal-information/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvPersonalInformation(@RequestBody PersonalInformation personalInformation) throws SQLException {
+        Response response = mainServiceImplentations.saveCvPersonalInformation(personalInformation);
+        return response;
+    }
+
+    /**
+     * Save the CV Contact Information
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (Contact Information) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/contact-information/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvContactInformation(@RequestBody ContactInformation contactInformation) throws SQLException {
+        Response response = mainServiceImplentations.saveCvContactInformation(contactInformation);
+        return response;
+    }
+
+    /**
+     * Save the CV Work experience
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (Work Experiences) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/work-experience/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvWorkExperience(@RequestBody WorkExperience workExperience) throws SQLException {
+        Response response = mainServiceImplentations.saveCvWorkExperience(workExperience);
+        return response;
+    }
+
+    /**
+     * Save the CV Education Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (Education) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/education/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvEducation(@RequestBody Education education) throws SQLException {
+        Response response = mainServiceImplentations.saveCvEducation(education);
+        return response;
     }
 
     @Override
@@ -142,163 +226,24 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
         return null;
     }
 
-    /**
-     * Method to retrieve all transactions related to account based on the client-id. All
-     * kind of transaction returned sorted according timestamp. If no results found, empty
-     * Account object is returned.
-     *
-     * @param clientId contains client-id
-     * @return Account transactions data (if success), or null in case of failure
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    @ApiOperation("Retrieves all account details and transactions related to the given client-id")
-    @RequestMapping(value = "/api/main-service/account/{clientId}",
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            method = RequestMethod.GET)
-    @ResponseBody
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Found"),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public ArrayList<Transaction> getAccountDetails(@PathVariable String clientId) {
-
-        FeignClient feignClient = getFeignClient("/api/account-service/account/");
-
-        ArrayList<Transaction> accountDetails = feignClient.getAccountDetailsFromClient(clientId);
-        return accountDetails;
+    @Override
+    public ArrayList<Transaction> getAccountDetails(String clientId) {
+        return null;
     }
 
-    /**
-     * Method to perform a fund transfer process. Usually the fund-transfer process consists from the following steps:
-     * 1) get the available balance, 2) get transfer details 3) check transfer details by (comparing balance to request)
-     * and (verifying benificiary details). 4) Update Account. 5) Add record to the main transfer table 6) Print receipt.
-     * All these methods will be available in both transaction-service and account-service. These will be called from here.
-     *
-     * @param fundTransferRequest transfer's all related fields
-     * @return Account transactions data (if success), or null in case of failure
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    @ApiOperation("Perform all necessary actions to perform a fund transfer")
-    @RequestMapping(value = "/api/main-service/transfer-fund",
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            method = RequestMethod.PUT)
-    @ResponseBody
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public FundTransferResponse transferFunds(@RequestBody FundTransferRequest fundTransferRequest) {
-
-        //GET  /api/account-service/balance/{clientId}
-        FeignClient feignClientAccountServiceBalance = getFeignClient("/api/account-service/balance/");
-        double accountBalance = feignClientAccountServiceBalance.getAccountBalance(fundTransferRequest.getClientId());
-
-        //POST /api/transaction-service/check
-        FeignClient feignClientTransactionServiceCheck = getFeignClient("/api/transaction-service/check");
-        fundTransferRequest.setAvailableBalance(accountBalance);
-        FundTransferResponse fundTransferResponse = feignClientTransactionServiceCheck.verifyTransfer(fundTransferRequest);
-
-        //POST /api/transaction-service/transaction/add
-        FeignClient feignClientTransactionServiceAdd = getFeignClient("/api/transaction-service/transaction/add");
-        Boolean performTransfer = feignClientTransactionServiceAdd.performTransfer(fundTransferRequest);
-        fundTransferResponse.setPerformTransferStatus(true);
-
-        //PUT /api/account-service/update
-        if(performTransfer != null && performTransfer) {
-            FeignClient feignClientAccountServiceUpdate = getFeignClient("/api/account-service/update/");
-            feignClientAccountServiceUpdate.updateAccountTable(fundTransferRequest);
-            fundTransferResponse.setUpdateAccountStatus(true);
-        }
-
-        fundTransferResponse.setBalance(accountBalance);
-        return fundTransferResponse;
+    @Override
+    public Response transferFunds(FundTransferRequest fundTransferRequest) {
+        return null;
     }
 
-    /**
-     * Method to deposit funds to the account. Usually the deposit process consists from the following steps:
-     * 1) Initiate the mechanical process to get and count the money. 2) Update Account records. 3) Print receipt.
-     * All these methods will be available in both transaction-service and account-service. These will be called from here.
-     *
-     * @param fundTransferRequest transfer's all related fields
-     * @return Account transactions data (if success), or null in case of failure
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    @ApiOperation("Deposits money to own account via ATM")
-    @RequestMapping(value = "/api/main-service/deposit",
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            method = RequestMethod.PUT)
-    @ResponseBody
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public FundTransferResponse deposit(@RequestBody FundTransferRequest fundTransferRequest) {
-
-        //1) Initaing the mechanical process to get and count the money
-        FeignClient feignClientAccountServiceGetAndCount = getFeignClient("");
-        boolean getAndCountResult = feignClientAccountServiceGetAndCount.getAndCount();
-
-        //2) Update Account records.
-        FeignClient feignClientAccountServiceUpdate = getFeignClient("/api/account-service/update/");
-        feignClientAccountServiceUpdate.updateAccountTable(fundTransferRequest);
-
-        FundTransferResponse fundTransferResponse = new FundTransferResponse();
-        fundTransferResponse.setUpdateAccountStatus(true);
-        return fundTransferResponse;
+    @Override
+    public Response deposit(FundTransferRequest fundTransferRequest) {
+        return null;
     }
 
-    /**
-     * Method to withdraw money from ATM. Usually the withdrawal process consists from the following steps:
-     * 1) get the available balance, 2) check transfer details by (comparing balance to request) 3) Update
-     * Account. 4) Initiate mechanical process to deliver money 5) Print receipt.
-     * All these methods will be available in both transaction-service and account-service. These will be called from here.
-     *
-     * @param fundTransferRequest transfer's all related fields
-     * @return Account transactions data (if success), or null in case of failure
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    @ApiOperation("Withdraws money from own account via ATM")
-    @RequestMapping(value = "/api/main-service/withdraw",
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            method = RequestMethod.PUT)
-    @ResponseBody
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-        public FundTransferResponse withdraw(@RequestBody FundTransferRequest fundTransferRequest) {
-
-        //1) get the available balance
-        FeignClient feignClientAccountServiceBalance = getFeignClient("/api/account-service/balance/");
-        double accountBalance = feignClientAccountServiceBalance.getAccountBalance(fundTransferRequest.getClientId());
-
-        //2) check transfer details by (comparing balance to request)
-        FeignClient feignClientTransactionServiceCheck = getFeignClient("/api/transaction-service/check");
-        fundTransferRequest.setAvailableBalance(accountBalance);
-        FundTransferResponse fundTransferResponse = feignClientTransactionServiceCheck.verifyTransfer(fundTransferRequest);
-
-        //3) Update Account.
-        if(fundTransferResponse.isResults()) {
-            FeignClient feignClientAccountServiceUpdate = getFeignClient("/api/account-service/update/");
-            feignClientAccountServiceUpdate.updateAccountTable(fundTransferRequest);
-            fundTransferResponse.setUpdateAccountStatus(true);
-        }
-
-        //4) Initiate mechanical process to deliver money
-        FeignClient feignClientTransactionServiceDeliverCash = getFeignClient("");
-        fundTransferRequest.setAvailableBalance(accountBalance);
-        feignClientTransactionServiceDeliverCash.deliverCash();
-
-        fundTransferResponse.setBalance(accountBalance);
-        return fundTransferResponse;
+    @Override
+    public Response withdraw(FundTransferRequest fundTransferRequest) {
+        return null;
     }
 
     @ExceptionHandler

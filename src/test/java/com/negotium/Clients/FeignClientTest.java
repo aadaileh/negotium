@@ -1,7 +1,7 @@
 package com.negotium.Clients;
 
 import com.negotium.DTOs.FundTransferRequest;
-import com.negotium.DTOs.FundTransferResponse;
+import com.negotium.DTOs.Response;
 import com.negotium.DTOs.Transaction;
 import com.negotium.DTOs.User;
 import org.junit.Before;
@@ -51,15 +51,15 @@ public class FeignClientTest {
         fundTransferRequestMock.setAmount(300);
         fundTransferRequestMock.setBankName(BANK_NAME);
 
-        FundTransferResponse fundTransferResponse = new FundTransferResponse();
-        fundTransferResponse.setResults(true);
+        Response response = new Response();
+       // response.setResults(true);
 
         when(feignClientMock.getUserDetails(anyString())).thenReturn(user);
         when(feignClientMock.getAccountDetailsFromClient(anyString())).thenReturn(transactions);
         when(feignClientMock.getAccountBalance(anyString())).thenReturn(ACCOUNT_BALANCE);
         when(feignClientMock.getAndCount()).thenReturn(true);
         when(feignClientMock.deliverCash()).thenReturn(true);
-        when(feignClientMock.verifyTransfer(fundTransferRequestMock)).thenReturn(fundTransferResponse);
+        when(feignClientMock.verifyTransfer(fundTransferRequestMock)).thenReturn(response);
     }
 
     @Test

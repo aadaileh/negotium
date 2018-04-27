@@ -3,7 +3,6 @@ package com.negotium.Services.Main.impl;
 import com.negotium.DTOs.Credentials;
 import com.negotium.DTOs.*;
 import com.negotium.Factory.CommonFactoryAbstract;
-import com.negotium.Services.Authentication.AuthenticationServiceController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Calendar;
-import java.util.UUID;
 
 /**
  * <h1>Authentication service implementations</h1>
@@ -28,7 +26,7 @@ import java.util.UUID;
 @Service
 public class MainServiceImplentations extends CommonFactoryAbstract {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AuthenticationServiceController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MainServiceImplentations.class);
 
     @Autowired
     private DataSource dataSource;
@@ -100,14 +98,12 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
     public User verifyCredentials(Credentials credentials) throws SQLException {
 
         dataSource = getDataSource();
-        Connection connection = null;
+        Connection connection = dataSource.getConnection();
+        Statement statement = connection.createStatement();
         User user = new User();
         ResultSet resultSet = null;
-        Statement statement = null;
 
         try {
-            connection = dataSource.getConnection();
-            statement = connection.createStatement();
             String sql = "SELECT *, users.id as table_users_id " +
                     "FROM credentials " +
                     "JOIN users ON credentials.id = users.credentials_id " +
@@ -128,6 +124,8 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 user.setCredentialsId(resultSet.getInt("credentials_id"));
             }
 
+            user = getAllIds (statement, user);
+
             return user;
 
         } catch (Exception e) {
@@ -144,11 +142,12 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
     }
 
 
-    public int createCvHeader(Header header) throws SQLException {
+    public Response saveCvHeader(Header header) throws SQLException {
 
         dataSource = getDataSource();
         Connection connection = null;
         User user = new User();
+        Response response = new Response();
 
         try {
             connection = dataSource.getConnection();
@@ -156,22 +155,130 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             int cvId = insertIntoCv(header, connection);
             updateUsers(header, connection, cvId);
 
-            return cvId;
+            response.setCvId(cvId);
+            return response;
 
         } catch (Exception e) {
 
             LOG.debug(e.getMessage());
-            return 0;
+            return response;
 
         } finally {
             connection.close();
         }
     }
 
+    public Response saveCvPersonalInformation(PersonalInformation personalInformation) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(personalInformation.getUsersId());
+        response.setCvId(personalInformation.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int piId = insertIntoPersonalInformation(personalInformation, connection);
+            //updateUsers(personalInformation, connection, piId);
+
+            response.setPersonalInformationId(piId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+    public Response saveCvContactInformation(ContactInformation contactInformation) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(contactInformation.getUsersId());
+        response.setCvId(contactInformation.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int ciId = insertIntoContactInformation(contactInformation, connection);
+
+            response.setPersonalInformationId(ciId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+    public Response saveCvWorkExperience(WorkExperience workExperience) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(workExperience.getUsersId());
+        response.setCvId(workExperience.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int weId = insertIntoWorkExperiences(workExperience, connection);
+
+            response.setWorkExperienceId(weId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+    public Response saveCvEducation(Education education) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(education.getUsersId());
+        response.setCvId(education.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int eduId = insertIntoEducation(education, connection);
+
+            response.setEducationsId(eduId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
 
     private Long insertIntoCredentials(User user, Connection connection, String token) throws SQLException {
-        String credentialsStmt = "INSERT INTO credentials (username, password, token, created_date_time) " +
-                "VALUES (?,?,?,?)";
+        String credentialsStmt = "INSERT INTO credentials (username, password, token, created_date_time) VALUES (?,?,?,?)";
 
         PreparedStatement pStmtCredentials = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
 
@@ -364,22 +471,169 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         return user;
     }
 
-    /**
-     * Set the timestamp user-last-logged-in when successfully logged in
-     * @param stmt SQL Stmt to update timestamp
-     * @param id Row id
-     *
-     * @return updated row id
-     * @throws SQLException
-     *
-     * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    private int updateRecord(Statement stmt, int id) throws SQLException {
-        String updateRowWithTimestamp = "UPDATE client " +
-                "SET last_logged_in = NOW() " +
-                "WHERE id = " + id;
-        return stmt.executeUpdate(
-                updateRowWithTimestamp);
+    private int insertIntoPersonalInformation(PersonalInformation pi, Connection connection) throws SQLException {
+        String credentialsStmt = "INSERT INTO personal_information (birthdate, gender, nationality, residence_country, " +
+                "marital_status, number_of_dependencies, cv_id) " +
+                "VALUES (?,?,?,?,?,?,?)";
+
+        PreparedStatement pStmtCvPI = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvPI.setString(1, pi.getBirthDate());
+        pStmtCvPI.setString(2, pi.getGender());
+        pStmtCvPI.setString(3, pi.getNationality());
+        pStmtCvPI.setString(4, pi.getResidenceCountry());
+        pStmtCvPI.setString(5, pi.getMaritalStatus());
+        pStmtCvPI.setInt(6, pi.getDependenciesNumber());
+        pStmtCvPI.setInt(7, pi.getCvId());
+
+        pStmtCvPI.executeUpdate();
+
+        int piId;
+        try (ResultSet generatedKeys = pStmtCvPI.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                piId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (Personal Information) failed, no ID obtained.");
+            }
+        }
+
+        return piId;
+    }
+
+    private int insertIntoContactInformation(ContactInformation ci, Connection connection) throws SQLException {
+        String credentialsStmt = "INSERT INTO contact_information (email, website, mobile, cv_id) VALUES (?,?,?,?)";
+
+        PreparedStatement pStmtCvCI = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvCI.setString(1, ci.getEmail());
+        pStmtCvCI.setString(2, ci.getWebsite());
+        pStmtCvCI.setString(3, ci.getMobile());
+        pStmtCvCI.setInt(4, ci.getCvId());
+
+        pStmtCvCI.executeUpdate();
+
+        int ciId;
+        try (ResultSet generatedKeys = pStmtCvCI.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                ciId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (Contact Information) failed, no ID obtained.");
+            }
+        }
+
+        return ciId;
+    }
+
+    private int insertIntoWorkExperiences(WorkExperience we, Connection connection) throws SQLException {
+        String credentialsStmt = "INSERT INTO work_experiences (we_order, start_date_time, end_date_time, title, employer, cv_id, description) " +
+                "VALUES (?,?,?,?,?,?,?)";
+
+        PreparedStatement pStmtCvWE = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvWE.setInt(1, 1);
+        pStmtCvWE.setString(2, we.getFrom());
+        pStmtCvWE.setString(3, we.getTo());
+        pStmtCvWE.setString(4, we.getTitle());
+        pStmtCvWE.setString(5, we.getEmployer());
+        pStmtCvWE.setInt(6, we.getCvId());
+        pStmtCvWE.setString(7, we.getDescription());
+
+        pStmtCvWE.executeUpdate();
+
+        int weId;
+        try (ResultSet generatedKeys = pStmtCvWE.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                weId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (Work Experiences) failed, no ID obtained.");
+            }
+        }
+
+        return weId;
+    }
+
+    private int insertIntoEducation(Education edu, Connection connection) throws SQLException {
+        String credentialsStmt = "INSERT INTO educations (edu_order, institution, degree, major, " +
+                "completion_date_time, cv_id, country, city, grade, description) " +
+                "VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+        PreparedStatement pStmtCvEducation = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvEducation.setInt(1, 1);
+        pStmtCvEducation.setString(2, edu.getInstitution());
+        pStmtCvEducation.setString(3, edu.getDegree());
+        pStmtCvEducation.setString(4, edu.getMajor());
+        pStmtCvEducation.setString(5, edu.getCompletionDate());
+        pStmtCvEducation.setInt(6, edu.getCvId());
+        pStmtCvEducation.setString(7, edu.getCountry());
+        pStmtCvEducation.setString(8, edu.getCity());
+        pStmtCvEducation.setString(9, edu.getGrade());
+        pStmtCvEducation.setString(10, edu.getDescription());
+
+        pStmtCvEducation.executeUpdate();
+
+        int eduId;
+        try (ResultSet generatedKeys = pStmtCvEducation.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                eduId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (Education) failed, no ID obtained.");
+            }
+        }
+
+        return eduId;
+    }
+
+    private User getAllIds (Statement statement, User user) throws SQLException {
+
+        try {
+            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet CIresultSet = statement.executeQuery(CIsql);
+            user.setContactInformationId(CIresultSet.getInt("id"));
+
+            String educationSQL = "SELECT * FROM education WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet educationResultSet = statement.executeQuery(educationSQL);
+            user.setEducationsId(educationResultSet.getInt("id"));
+
+            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet languageResultSet = statement.executeQuery(languageSQL);
+            user.setLanguagesId(languageResultSet.getInt("id"));
+
+            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
+            user.setPersonalInformationId(personalInfoResultSet.getInt("id"));
+
+            String prefferedJobSQL = "SELECT * FROM preffered_job WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet prefferedJobResultSet = statement.executeQuery(prefferedJobSQL);
+            user.setPrefferedJobId(prefferedJobResultSet.getInt("id"));
+
+            String referencesSQL = "SELECT * FROM references WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
+            user.setReferencesId(referencesResultSet.getInt("id"));
+
+            String skillsSQL = "SELECT * FROM skills WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet skillsResultSet = statement.executeQuery(skillsSQL);
+            user.setSkillsId(skillsResultSet.getInt("id"));
+
+            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + user.getCvId() + "';";
+            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
+            user.setWorkExperienceId(workExperienceResultSet.getInt("id"));
+
+            return user;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+
+        } finally {
+            try { statement.close(); } catch (Exception e) { /* ignored */ }
+        }
+
+        return user;
     }
 
 

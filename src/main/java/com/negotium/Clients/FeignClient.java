@@ -42,7 +42,7 @@ public interface FeignClient {
 
     @RequestLine("POST")
     @Headers("Content-Type: application/json")
-    FundTransferResponse verifyTransfer(FundTransferRequest fundTransferRequest);
+    Response verifyTransfer(FundTransferRequest fundTransferRequest);
 
     @RequestLine("POST")
     @Headers("Content-Type: application/json")
