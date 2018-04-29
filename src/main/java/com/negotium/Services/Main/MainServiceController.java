@@ -264,6 +264,27 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
         return response;
     }
 
+    /**
+     * Search CVs according several criteria
+     *
+     * @return Resumes contains all related searched fields
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Search CVs according several criteria")
+    @RequestMapping(value = "/negotium/api/search/cv/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException {
+        ArrayList<Resume> resumes = mainServiceImplentations.search(searchCriteria);
+        return resumes;
+    }
+
     @Override
     public User getUser(String username) {
         return null;

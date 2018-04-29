@@ -21,9 +21,7 @@ public class User {
     private int educationsId;
     private int languagesId;
     private int personalInformationId;
-    private int prefferedJobId;
     private int referencesId;
-    private int skillsId;
     private int workExperienceId;
 
     private String type;
@@ -94,28 +92,12 @@ public class User {
         this.personalInformationId = personalInformationId;
     }
 
-    public int getPrefferedJobId() {
-        return prefferedJobId;
-    }
-
-    public void setPrefferedJobId(int prefferedJobId) {
-        this.prefferedJobId = prefferedJobId;
-    }
-
     public int getReferencesId() {
         return referencesId;
     }
 
     public void setReferencesId(int referencesId) {
         this.referencesId = referencesId;
-    }
-
-    public int getSkillsId() {
-        return skillsId;
-    }
-
-    public void setSkillsId(int skillsId) {
-        this.skillsId = skillsId;
     }
 
     public int getWorkExperienceId() {

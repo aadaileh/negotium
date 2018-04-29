@@ -19,6 +19,7 @@ public class Header {
     private String location;
     private String education;
     private String experience;
+    private String prefferedJob;
     private String photo;
     private int usersId;
 
@@ -52,6 +53,14 @@ public class Header {
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    public String getPrefferedJob() {
+        return prefferedJob;
+    }
+
+    public void setPrefferedJob(String prefferedJob) {
+        this.prefferedJob = prefferedJob;
     }
 
     public String getPhoto() {
