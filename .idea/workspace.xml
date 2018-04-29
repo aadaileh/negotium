@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Language.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Reference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" afterDir="false" />
-    </list>
+    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -245,15 +238,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="negotium" type="462c0819:PsiDirectoryNode" />
-              <item name="DTOs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NEGOTIUM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="negotium" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="negotium" type="462c0819:PsiDirectoryNode" />
               <item name="Main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -358,7 +342,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="1" />
@@ -373,7 +356,7 @@
       <window_info id="Structure" order="4" side_tool="true" weight="0.24966443" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="6" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.37321937" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.37321937" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info id="DB Browser" order="0" weight="0.3295302" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
@@ -381,9 +364,9 @@
       <window_info id="Image Layers" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.2863248" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.2863248" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.26644295" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.26644295" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32905984" />
       <window_info anchor="right" id="Google Cloud Storage" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
