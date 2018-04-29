@@ -201,7 +201,7 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     }
 
     /**
-     * Save the CV Education Section
+     * Saves the CV Education Section
      *
      * @return Response contains all related IDs
      *
@@ -218,6 +218,49 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvEducation(@RequestBody Education education) throws SQLException {
         Response response = mainServiceImplentations.saveCvEducation(education);
+        return response;
+    }
+
+    /**
+     * Saves the CV Language Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (Languages) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/language/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvLanguage(@RequestBody Language language) throws SQLException {
+        Response response = mainServiceImplentations.saveCvLanguage(language);
+        return response;
+    }
+
+
+    /**
+     * Saves the CV References Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Saves the (References) section of the CV")
+    @RequestMapping(value = "/negotium/api/save/cv/reference/",
+            method = RequestMethod.POST)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public Response saveCvReference(@RequestBody Reference reference) throws SQLException {
+        Response response = mainServiceImplentations.saveCvReference(reference);
         return response;
     }
 

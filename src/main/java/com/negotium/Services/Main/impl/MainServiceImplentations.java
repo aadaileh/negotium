@@ -3,6 +3,7 @@ package com.negotium.Services.Main.impl;
 import com.negotium.DTOs.Credentials;
 import com.negotium.DTOs.*;
 import com.negotium.Factory.CommonFactoryAbstract;
+import org.apache.commons.codec.language.bm.Lang;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -263,6 +264,60 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             connection = dataSource.getConnection();
 
             int eduId = insertIntoEducation(education, connection);
+
+            response.setEducationsId(eduId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+    public Response saveCvLanguage(Language language) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(language.getUsersId());
+        response.setCvId(language.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int eduId = insertIntoLanguages(language, connection);
+
+            response.setEducationsId(eduId);
+            return response;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+            return response;
+
+        } finally {
+            connection.close();
+        }
+    }
+
+    public Response saveCvReference(Reference reference) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        Response response = new Response();
+
+        response.setUserId(reference.getUsersId());
+        response.setCvId(reference.getCvId());
+
+        try {
+            connection = dataSource.getConnection();
+
+            int eduId = insertIntoReferences(reference, connection);
 
             response.setEducationsId(eduId);
             return response;
@@ -587,6 +642,60 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         return eduId;
     }
+
+    private int insertIntoLanguages(Language language, Connection connection) throws SQLException {
+        String languageStmt = "INSERT INTO languages (lang_order, language, lang_level, cv_id) VALUES (?,?,?,?)";
+
+        PreparedStatement pStmtCvLanguage = connection.prepareStatement(languageStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvLanguage.setInt(1, 1);
+        pStmtCvLanguage.setString(2, language.getLanguage());
+        pStmtCvLanguage.setString(3, language.getLevel());
+        pStmtCvLanguage.setInt(4, language.getCvId());
+
+        pStmtCvLanguage.executeUpdate();
+
+        int langId;
+        try (ResultSet generatedKeys = pStmtCvLanguage.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                langId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (Languages) failed, no ID obtained.");
+            }
+        }
+
+        return langId;
+    }
+
+    private int insertIntoReferences(Reference reference, Connection connection) throws SQLException {
+        String referenceStmt = "INSERT INTO cv_references (ref_order, ref_name, job_title, company_name, phone, email, cv_id) VALUES (?,?,?,?,?,?,?);";
+
+        PreparedStatement pStmtCvReference = connection.prepareStatement(referenceStmt, Statement.RETURN_GENERATED_KEYS);
+
+        pStmtCvReference.setInt(1, 1);
+        pStmtCvReference.setString(2, reference.getName());
+        pStmtCvReference.setString(3, reference.getTitle());
+        pStmtCvReference.setString(4, reference.getCompanyName());
+        pStmtCvReference.setString(5, reference.getTel());
+        pStmtCvReference.setString(6, reference.getEmail());
+        pStmtCvReference.setInt(7, reference.getCvId());
+
+        pStmtCvReference.executeUpdate();
+
+        int refId;
+        try (ResultSet generatedKeys = pStmtCvReference.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                refId = generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Inserting CV (References) failed, no ID obtained.");
+            }
+        }
+
+        return refId;
+    }
+
 
     private User getAllIds (Statement statement, User user) throws SQLException {
 
