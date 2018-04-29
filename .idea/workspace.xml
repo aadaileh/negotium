@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="" />
+    <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +25,8 @@
       <file leaf-file-name="MainServiceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="262" selection-start-line="262" selection-end-line="262" />
+            <state relative-caret-position="274">
+              <caret line="177" selection-start-line="177" selection-end-line="177" />
               <folding>
                 <element signature="e#6821#6822#0" expanded="true" />
                 <element signature="e#6848#6849#0" expanded="true" />
@@ -85,8 +87,8 @@
       <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="683" selection-start-line="683" selection-end-line="683" />
+            <state relative-caret-position="255">
+              <caret line="572" lean-forward="true" selection-start-line="572" selection-end-line="572" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#14962#14963#0" expanded="true" />
@@ -113,6 +115,10 @@
       <find>/negotium/api/login/</find>
       <find>login</find>
       <find>select</find>
+      <find>credentials</find>
+      <find>UPDATE</find>
+      <find>UPDATE</find>
+      <find>contact</find>
     </findStrings>
     <replaceStrings>
       <replace>NEGOTIUM</replace>
@@ -342,6 +348,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="1" />
@@ -356,7 +363,7 @@
       <window_info id="Structure" order="4" side_tool="true" weight="0.24966443" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="6" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.37321937" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.37321937" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info id="DB Browser" order="0" weight="0.3295302" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
@@ -364,9 +371,9 @@
       <window_info id="Image Layers" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.2863248" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.2863248" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.26644295" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.26644295" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32905984" />
       <window_info anchor="right" id="Google Cloud Storage" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -410,7 +417,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java</url>
-          <line>597</line>
+          <line>590</line>
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
@@ -458,7 +465,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java</url>
-          <line>683</line>
+          <line>676</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
@@ -468,8 +475,32 @@
           <properties />
           <option name="timeStamp" value="70" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java</url>
+          <line>335</line>
+          <properties />
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java</url>
+          <line>573</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java</url>
+          <line>560</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java</url>
+          <line>177</line>
+          <properties />
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="71" />
+      <option name="time" value="76" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -1131,8 +1162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="262" selection-start-line="262" selection-end-line="262" />
+        <state relative-caret-position="274">
+          <caret line="177" selection-start-line="177" selection-end-line="177" />
           <folding>
             <element signature="e#6821#6822#0" expanded="true" />
             <element signature="e#6848#6849#0" expanded="true" />
@@ -1148,8 +1179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="683" selection-start-line="683" selection-end-line="683" />
+        <state relative-caret-position="255">
+          <caret line="572" lean-forward="true" selection-start-line="572" selection-end-line="572" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#14962#14963#0" expanded="true" />

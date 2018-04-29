@@ -209,9 +209,9 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         try {
             connection = dataSource.getConnection();
 
-            int ciId = insertIntoContactInformation(contactInformation, connection);
+            int ciId = updateContactInformation(contactInformation, connection);
 
-            response.setPersonalInformationId(ciId);
+            response.setContactInformationId(ciId);
             return response;
 
         } catch (Exception e) {
@@ -556,36 +556,29 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         return piId;
     }
 
-    private int insertIntoContactInformation(ContactInformation ci, Connection connection) throws SQLException {
-        String credentialsStmt = "INSERT INTO contact_information (email, website, mobile, cv_id) VALUES (?,?,?,?)";
+    private int updateContactInformation(ContactInformation ci, Connection connection) throws SQLException {
 
-        PreparedStatement pStmtCvCI = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+        String contactInformationStmt = "UPDATE contact_information SET " +
+                "email = '" + ci.getEmail() + "', " +
+                "website = '" + ci.getWebsite() + "', " +
+                "mobile = '" + ci.getMobile() + "', " +
+                "cv_id = " + ci.getCvId() +
+                " WHERE users_id = " + ci.getUsersId();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(contactInformationStmt);
 
-        pStmtCvCI.setString(1, ci.getEmail());
-        pStmtCvCI.setString(2, ci.getWebsite());
-        pStmtCvCI.setString(3, ci.getMobile());
-        pStmtCvCI.setInt(4, ci.getCvId());
-
-        pStmtCvCI.executeUpdate();
-
-        int ciId;
-        try (ResultSet generatedKeys = pStmtCvCI.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                ciId = generatedKeys.getInt(1);
-            }
-            else {
-                throw new SQLException("Inserting CV (Contact Information) failed, no ID obtained.");
-            }
-        }
+        String CIsql = "SELECT * FROM contact_information WHERE users_id = " + ci.getUsersId();
+        ResultSet CIresultSet = statement.executeQuery(CIsql);
+        int ciId = CIresultSet.getInt("id");
 
         return ciId;
     }
 
     private int insertIntoWorkExperiences(WorkExperience we, Connection connection) throws SQLException {
-        String credentialsStmt = "INSERT INTO work_experiences (we_order, start_date_time, end_date_time, title, employer, cv_id, description) " +
+        String workExperienceStmt = "INSERT INTO work_experiences (we_order, start_date_time, end_date_time, title, employer, cv_id, description) " +
                 "VALUES (?,?,?,?,?,?,?)";
 
-        PreparedStatement pStmtCvWE = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pStmtCvWE = connection.prepareStatement(workExperienceStmt, Statement.RETURN_GENERATED_KEYS);
 
         pStmtCvWE.setInt(1, 1);
         pStmtCvWE.setString(2, we.getFrom());
@@ -611,11 +604,11 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
     }
 
     private int insertIntoEducation(Education edu, Connection connection) throws SQLException {
-        String credentialsStmt = "INSERT INTO educations (edu_order, institution, degree, major, " +
+        String educationStmt = "INSERT INTO educations (edu_order, institution, degree, major, " +
                 "completion_date_time, cv_id, country, city, grade, description) " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-        PreparedStatement pStmtCvEducation = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pStmtCvEducation = connection.prepareStatement(educationStmt, Statement.RETURN_GENERATED_KEYS);
 
         pStmtCvEducation.setInt(1, 1);
         pStmtCvEducation.setString(2, edu.getInstitution());
