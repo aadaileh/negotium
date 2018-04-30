@@ -15,6 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * <h1>Authentication service implementations</h1>
@@ -551,11 +552,9 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         Statement statement = getDataSource().getConnection().createStatement();
         ArrayList<Resume> resumes = new ArrayList<>();
+        HashSet<Integer> cvIds = new HashSet<Integer>();
 
         try {
-
-            Resume resume = new Resume();
-            HashSet cvIds = new HashSet();
 
             if(searchCriteria.getJobOrSectorPreference() != null && !searchCriteria.getJobOrSectorPreference().isEmpty()) {
                 String sql = "SELECT id FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
@@ -647,14 +646,24 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 }
             }
 
-            ArrayList<Integer> uniqueCvIds = new ArrayList();
-
         } catch (Exception e) {
 
                 LOG.debug(e.getMessage());
 
         } finally {
             try { statement.close(); } catch (Exception e) { /* ignored */ }
+        }
+
+        for (int cvId : cvIds) {
+            ResumeComplete cv = getCv(cvId);
+
+            Resume resume = new Resume();
+            resume.setName(cv.getName() + " " + cv.getSurname());
+            resume.setContactData("Email: " + cv.getEmail() + ", Mobile: " + cv.getMobile() + ", Website: " + cv.getWebsite());
+            resume.setEducation(cv.getEducation());
+            resume.setExperience(cv.getExperience());
+
+            resumes.add(resume);
         }
 
         return resumes;
@@ -673,45 +682,106 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
      */
     public ResumeComplete getCv (int cvId) throws SQLException {
 
-        Statement statement = getDataSource().getConnection().createStatement();
+        Connection connection = getDataSource().getConnection();
+        Statement statement = connection.createStatement();
         ResumeComplete resumeComplete = new ResumeComplete();
 
         try {
-//            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet CIresultSet = statement.executeQuery(CIsql);
-//            while (CIresultSet.next()) {
-//                user.setContactInformationId(CIresultSet.getInt("id"));
-//            }
-//
-//            String educationSQL = "SELECT * FROM education WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet educationResultSet = statement.executeQuery(educationSQL);
-//            while (educationResultSet.next()) {
-//                user.setEducationsId(educationResultSet.getInt("id"));
-//            }
-//
-//            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet languageResultSet = statement.executeQuery(languageSQL);
-//            while (languageResultSet.next()) {
-//                user.setLanguagesId(languageResultSet.getInt("id"));
-//            }
-//
-//            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
-//            while (personalInfoResultSet.next()) {
-//                user.setPersonalInformationId(personalInfoResultSet.getInt("id"));
-//            }
-//
-//            String referencesSQL = "SELECT * FROM references WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
-//            while (referencesResultSet.next()) {
-//                user.setReferencesId(referencesResultSet.getInt("id"));
-//            }
-//
-//            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + user.getCvId() + "';";
-//            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
-//            while (workExperienceResultSet.next()) {
-//                user.setWorkExperienceId(workExperienceResultSet.getInt("id"));
-//            }
+
+            //users
+            String usersSql = "SELECT * FROM users WHERE cv_id = '" + cvId + "';";
+            ResultSet usersResultSet = statement.executeQuery(usersSql);
+            while (usersResultSet.next()) {
+                resumeComplete.setName(usersResultSet.getString("name"));
+                resumeComplete.setSurname(usersResultSet.getString("surname"));
+            }
+            usersResultSet.close();
+
+            //cv (header)
+            String CVSql = "SELECT * FROM cv WHERE id = '" + cvId + "';";
+            ResultSet CVResultSet = statement.executeQuery(CVSql);
+            while (CVResultSet.next()) {
+                resumeComplete.setTitle(CVResultSet.getString("title"));
+                resumeComplete.setCreationDate(CVResultSet.getString("created_date_time"));
+                resumeComplete.setEducation(CVResultSet.getString("education"));
+                resumeComplete.setLocation(CVResultSet.getString("location"));
+                resumeComplete.setGcse(CVResultSet.getString("gcse"));
+                resumeComplete.setSkills(CVResultSet.getString("skills"));
+                resumeComplete.setExperience(CVResultSet.getString("experience"));
+                resumeComplete.setPrefferedJob(CVResultSet.getString("prefferedJob"));
+            }
+            CVResultSet.close();
+
+            //contact_information
+            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + cvId + "';";
+            ResultSet CIresultSet = statement.executeQuery(CIsql);
+            while (CIresultSet.next()) {
+                resumeComplete.setEmail(CIresultSet.getString("email"));
+                resumeComplete.setMobile(CIresultSet.getString("mobile"));
+                resumeComplete.setWebsite(CIresultSet.getString("website"));
+            }
+            CIresultSet.close();
+
+            //personal_information
+            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + cvId + "';";
+            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
+            while (personalInfoResultSet.next()) {
+                resumeComplete.setBirthdate(personalInfoResultSet.getString("birthdate"));
+                resumeComplete.setGender(personalInfoResultSet.getString("gender"));
+                resumeComplete.setNationality(personalInfoResultSet.getString("nationality"));
+                resumeComplete.setResidenceCountry(personalInfoResultSet.getString("residence_country"));
+                resumeComplete.setMaritalStatus(personalInfoResultSet.getString("marital_status"));
+                resumeComplete.setNumberOfDependencies(personalInfoResultSet.getString("number_of_dependencies"));
+            }
+            personalInfoResultSet.close();
+
+            //education
+            String educationSQL = "SELECT * FROM education WHERE cv_id = '" + cvId + "';";
+            ResultSet educationResultSet = statement.executeQuery(educationSQL);
+            while (educationResultSet.next()) {
+                resumeComplete.setInstitution(educationResultSet.getString("institution"));
+                resumeComplete.setDegree(educationResultSet.getString("degree"));
+                resumeComplete.setMajor(educationResultSet.getString("major"));
+                resumeComplete.setCompletionDate(educationResultSet.getString("completion_date_time"));
+                resumeComplete.setCountry(educationResultSet.getString("country"));
+                resumeComplete.setCity(educationResultSet.getString("city"));
+                resumeComplete.setGrade(educationResultSet.getString("grade"));
+                resumeComplete.setEducationDescription(educationResultSet.getString("description"));
+            }
+            educationResultSet.close();
+
+            //languages
+            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + cvId + "';";
+            ResultSet languageResultSet = statement.executeQuery(languageSQL);
+            while (languageResultSet.next()) {
+                resumeComplete.setLanguage(languageResultSet.getString("language"));
+                resumeComplete.setLanguageLevel(languageResultSet.getString("lang_level"));
+            }
+            languageResultSet.close();
+
+            //references
+            String referencesSQL = "SELECT * FROM references WHERE cv_id = '" + cvId + "';";
+            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
+            while (referencesResultSet.next()) {
+                resumeComplete.setReferenceName(referencesResultSet.getString("ref_name"));
+                resumeComplete.setReferenceJobTitle(referencesResultSet.getString("job_title"));
+                resumeComplete.setReferenceCompanyName(referencesResultSet.getString("company_name"));
+                resumeComplete.setReferencePhone(referencesResultSet.getString("phone"));
+                resumeComplete.setReferenceEmail(referencesResultSet.getString("email"));
+            }
+            referencesResultSet.close();
+
+            //work_experiences
+            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + cvId + "';";
+            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
+            while (workExperienceResultSet.next()) {
+                resumeComplete.setStartDate(workExperienceResultSet.getString("start_date_time"));
+                resumeComplete.setEndDate(workExperienceResultSet.getString("end_date_time"));
+                resumeComplete.setWorkTitle(workExperienceResultSet.getString("title"));
+                resumeComplete.setEmployer(workExperienceResultSet.getString("employer"));
+                resumeComplete.setWorkDescription(workExperienceResultSet.getString("description"));
+            }
+            workExperienceResultSet.close();
 
             return resumeComplete;
 
@@ -720,9 +790,8 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             LOG.debug(e.getMessage());
 
         } finally {
-            try {
-                statement.close();
-            } catch (Exception e) { /* ignored */ }
+            try { statement.close(); } catch (Exception e) { /* ignored */ }
+            try { connection.close(); } catch (Exception e) { /* ignored */ }
         }
 
         return resumeComplete;

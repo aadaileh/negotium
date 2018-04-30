@@ -66,6 +66,10 @@ public class ResumeComplete {
     private String referencePhone;
     private String referenceEmail;
 
+    //languages
+    private String language;
+    private String languageLevel;
+
     public int getCvId() {
         return cvId;
     }
@@ -368,5 +372,21 @@ public class ResumeComplete {
 
     public void setReferenceEmail(String referenceEmail) {
         this.referenceEmail = referenceEmail;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getLanguageLevel() {
+        return languageLevel;
+    }
+
+    public void setLanguageLevel(String languageLevel) {
+        this.languageLevel = languageLevel;
     }
 }
