@@ -727,7 +727,10 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         PreparedStatement pStmtCvWE = connection.prepareStatement(workExperienceStmt, Statement.RETURN_GENERATED_KEYS);
 
-        pStmtCvWE.setInt(1, 1);
+        int order = 0;
+        if (we.getOrder() != 0) { order = we.getOrder();} else {order = 1;}
+
+        pStmtCvWE.setInt(1, order);
         pStmtCvWE.setString(2, we.getFrom());
         pStmtCvWE.setString(3, we.getTo());
         pStmtCvWE.setString(4, we.getTitle());
@@ -757,7 +760,10 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         PreparedStatement pStmtCvEducation = connection.prepareStatement(educationStmt, Statement.RETURN_GENERATED_KEYS);
 
-        pStmtCvEducation.setInt(1, 1);
+        int order = 0;
+        if (edu.getOrder() != 0) { order = edu.getOrder();} else {order = 1;}
+
+        pStmtCvEducation.setInt(1, order);
         pStmtCvEducation.setString(2, edu.getInstitution());
         pStmtCvEducation.setString(3, edu.getDegree());
         pStmtCvEducation.setString(4, edu.getMajor());
@@ -788,7 +794,10 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         PreparedStatement pStmtCvLanguage = connection.prepareStatement(languageStmt, Statement.RETURN_GENERATED_KEYS);
 
-        pStmtCvLanguage.setInt(1, 1);
+        int order = 0;
+        if (language.getOrder() != 0) { order = language.getOrder();} else {order = 1;}
+
+        pStmtCvLanguage.setInt(1, order);
         pStmtCvLanguage.setString(2, language.getLanguage());
         pStmtCvLanguage.setString(3, language.getLevel());
         pStmtCvLanguage.setInt(4, language.getCvId());
@@ -813,7 +822,10 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         PreparedStatement pStmtCvReference = connection.prepareStatement(referenceStmt, Statement.RETURN_GENERATED_KEYS);
 
-        pStmtCvReference.setInt(1, 1);
+        int order = 0;
+        if (reference.getOrder() != 0) { order = reference.getOrder();} else {order = 1;}
+
+        pStmtCvReference.setInt(1, order);
         pStmtCvReference.setString(2, reference.getName());
         pStmtCvReference.setString(3, reference.getTitle());
         pStmtCvReference.setString(4, reference.getCompanyName());
