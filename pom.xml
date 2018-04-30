@@ -211,6 +211,15 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
+
+        <!-- add all iText 7 Core modules -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>${itext.version}</version>
+            <type>pom</type>
+        </dependency>
+
     </dependencies>
 </dependencyManagement>
 

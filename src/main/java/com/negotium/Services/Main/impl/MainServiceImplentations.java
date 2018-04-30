@@ -33,7 +33,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
     @Autowired
     private DataSource dataSource;
 
-    public String registerUser(User user) throws SQLException {
+    public User registerUser(User user) throws SQLException {
 
         dataSource = getDataSource();
         Connection connection = null;
@@ -45,10 +45,12 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             Statement stmt = connection.createStatement();
 
             Long credentialsId = insertIntoCredentials(user, connection, token);
-            Long usersId = insertIntoUsers(user, connection, credentialsId);
+            int usersId = insertIntoUsers(user, connection, credentialsId);
             insertIntoContactInformation(user, connection, usersId);
 
-            return token;
+            stmt.close();
+            user.setUserId(usersId);
+            return user;
 
         } catch (Exception e) {
 
@@ -83,6 +85,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         } finally {
             connection.close();
+
         }
     }
 
@@ -352,14 +355,16 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 credentialsId = generatedKeys.getLong(1);
             }
             else {
+                pStmtCredentials.close();
                 throw new SQLException("Creating credentials failed, no ID obtained.");
             }
         }
 
+        pStmtCredentials.close();
         return credentialsId;
     }
 
-    private Long insertIntoUsers(User user, Connection connection, Long credentialsId) throws SQLException {
+    private int insertIntoUsers(User user, Connection connection, Long credentialsId) throws SQLException {
 
         String usersStmt = "INSERT INTO users (type, name, surname, email, tel, credentials_id, created_date_time) " +
                 "VALUES ('job_seeker', ?, ?, ?, ?, ?, ?);";
@@ -376,10 +381,10 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         pStmtUsers.executeUpdate();
 
-        Long usersId;
+        int usersId;
         try (ResultSet generatedKeys = pStmtUsers.getGeneratedKeys()) {
             if (generatedKeys.next()) {
-                usersId = generatedKeys.getLong(1);
+                usersId = generatedKeys.getInt(1);
             }
             else {
                 throw new SQLException("Creating users failed, no ID obtained.");
@@ -389,7 +394,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         return usersId;
     }
 
-    private Long insertIntoContactInformation(User user, Connection connection, Long usersId) throws SQLException {
+    private Long insertIntoContactInformation(User user, Connection connection, int usersId) throws SQLException {
 
         String usersStmt = "INSERT INTO contact_information (email, mobile, users_id) " +
                 "VALUES (?, ?, ?);";
@@ -548,7 +553,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             ArrayList<Integer> cvIds = new ArrayList<Integer>();
 
             if(searchCriteria.getJobOrSectorPreference() != null && !searchCriteria.getJobOrSectorPreference().isEmpty()) {
-                String sql = "SELECT * FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
+                String sql = "SELECT id FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
@@ -556,7 +561,11 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             }
 
             if(searchCriteria.getMinimumEducationLevel() != null && !searchCriteria.getMinimumEducationLevel().isEmpty()) {
-
+                String sql = "SELECT cv_id FROM cv WHERE education >= " + searchCriteria.getMinimumEducationLevel() + ";";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("cv_id"));
+                }
             }
 
             if(searchCriteria.getMinimumNumberOfGCSE() != null && !searchCriteria.getMinimumNumberOfGCSE().isEmpty()) {
@@ -590,6 +599,73 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         return resumes;
     }
 
+
+
+    /**
+     * Method Returns the whole CV data based on the given ID
+     *
+     * @param cvId The ID of the requested CV
+     * @return All fields of a CV
+     * @throws SQLException
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public ResumeComplete getCv (int cvId) throws SQLException {
+
+        Statement statement = getDataSource().getConnection().createStatement();
+        ResumeComplete resumeComplete = new ResumeComplete();
+
+        try {
+//            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet CIresultSet = statement.executeQuery(CIsql);
+//            while (CIresultSet.next()) {
+//                user.setContactInformationId(CIresultSet.getInt("id"));
+//            }
+//
+//            String educationSQL = "SELECT * FROM education WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet educationResultSet = statement.executeQuery(educationSQL);
+//            while (educationResultSet.next()) {
+//                user.setEducationsId(educationResultSet.getInt("id"));
+//            }
+//
+//            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet languageResultSet = statement.executeQuery(languageSQL);
+//            while (languageResultSet.next()) {
+//                user.setLanguagesId(languageResultSet.getInt("id"));
+//            }
+//
+//            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
+//            while (personalInfoResultSet.next()) {
+//                user.setPersonalInformationId(personalInfoResultSet.getInt("id"));
+//            }
+//
+//            String referencesSQL = "SELECT * FROM references WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
+//            while (referencesResultSet.next()) {
+//                user.setReferencesId(referencesResultSet.getInt("id"));
+//            }
+//
+//            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + user.getCvId() + "';";
+//            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
+//            while (workExperienceResultSet.next()) {
+//                user.setWorkExperienceId(workExperienceResultSet.getInt("id"));
+//            }
+
+            return resumeComplete;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+
+        } finally {
+            try {
+                statement.close();
+            } catch (Exception e) { /* ignored */ }
+        }
+
+        return resumeComplete;
+    }
 
     private int insertIntoPersonalInformation(PersonalInformation pi, Connection connection) throws SQLException {
         String credentialsStmt = "INSERT INTO personal_information (birthdate, gender, nationality, residence_country, " +

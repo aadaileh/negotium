@@ -63,9 +63,9 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public String registerUser(@RequestBody User user) throws SQLException {
+    public int registerUser(@RequestBody User user) throws SQLException {
 
-        return mainServiceImplentations.registerUser(user);
+        return mainServiceImplentations.registerUser(user).getUserId();
     }
 
     /**
@@ -283,6 +283,27 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     public ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException {
         ArrayList<Resume> resumes = mainServiceImplentations.search(searchCriteria);
         return resumes;
+    }
+
+    /**
+     * Return the whole CV data based on the given ID
+     *
+     * @return Resumes contains all related searched fields
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    @ApiOperation("Returns the whole CV data based on the given ID")
+    @RequestMapping(value = "/negotium/api/cv/{id}",
+            method = RequestMethod.GET)
+    @ResponseBody
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Found"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
+    public ResumeComplete getCv(@PathVariable int cvId) throws SQLException {
+        ResumeComplete cv = mainServiceImplentations.getCv(cvId);
+        return cv;
     }
 
     @Override
