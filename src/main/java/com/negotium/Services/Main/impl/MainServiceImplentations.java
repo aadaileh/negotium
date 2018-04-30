@@ -550,7 +550,8 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
      */
     public ArrayList<Resume> search (SearchCriteria searchCriteria) throws SQLException {
 
-        Statement statement = getDataSource().getConnection().createStatement();
+        Connection connection = getDataSource().getConnection();
+        Statement statement = connection.createStatement();
         ArrayList<Resume> resumes = new ArrayList<>();
         HashSet<Integer> cvIds = new HashSet<Integer>();
 
@@ -562,6 +563,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
             }
 
             if(searchCriteria.getMinimumEducationLevel() != null && !searchCriteria.getMinimumEducationLevel().isEmpty()) {
@@ -570,6 +572,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
             }
 
             if(searchCriteria.getMinimumNumberOfGCSE() != null && !searchCriteria.getMinimumNumberOfGCSE().isEmpty()) {
@@ -578,6 +581,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
             }
 
             String educationalQualification = searchCriteria.getEducationalQualification();
@@ -588,6 +592,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
 
                 //search in table 'educations'
                 String sqlEducation = "SELECT id FROM educations WHERE " +
@@ -597,6 +602,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSetEducations.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSetEducations.close();
             }
 
             String professionalQualification = searchCriteria.getProfessionalQualification();
@@ -607,6 +613,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
 
                 //search in table 'work_experiences'
                 String sqlEducation = "SELECT id FROM work_experiences WHERE " +
@@ -616,6 +623,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSetWorkExperiences.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSetWorkExperiences.close();
             }
 
             String skills = searchCriteria.getSkills();
@@ -625,6 +633,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
             }
 
             String experiences = searchCriteria.getExperiences();
@@ -635,6 +644,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSet.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSet.close();
 
                 //search in table 'work_experiences'
                 String sqlEducation = "SELECT id FROM work_experiences WHERE " +
@@ -644,6 +654,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 while (resultSetExperiences.next()) {
                     cvIds.add(resultSet.getInt("id"));
                 }
+                resultSetExperiences.close();
             }
 
         } catch (Exception e) {
@@ -652,18 +663,23 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         } finally {
             try { statement.close(); } catch (Exception e) { /* ignored */ }
+            try { connection.close(); } catch (Exception e) { /* ignored */ }
+
         }
 
         for (int cvId : cvIds) {
             ResumeComplete cv = getCv(cvId);
 
-            Resume resume = new Resume();
-            resume.setName(cv.getName() + " " + cv.getSurname());
-            resume.setContactData("Email: " + cv.getEmail() + ", Mobile: " + cv.getMobile() + ", Website: " + cv.getWebsite());
-            resume.setEducation(cv.getEducation());
-            resume.setExperience(cv.getExperience());
+            if(cv.getName() != null && !cv.getName().isEmpty() && cv.getSurname() != null && !cv.getSurname().isEmpty()) {
+                Resume resume = new Resume();
+                resume.setCvId(cvId);
+                resume.setName(cv.getName() + " " + cv.getSurname());
+                resume.setContactData("Email: " + cv.getEmail() + ", Mobile: " + cv.getMobile() + ", Website: " + cv.getWebsite());
+                resume.setEducation(cv.getEducation());
+                resume.setExperience(cv.getExperience());
 
-            resumes.add(resume);
+                resumes.add(resume);
+            }
         }
 
         return resumes;
