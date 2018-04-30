@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
  * @version 1.0
- * @since   26.04.2018
+ * @since   16.04.2018
  */
 public class Response {
 

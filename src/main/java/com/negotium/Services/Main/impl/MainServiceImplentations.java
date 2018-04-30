@@ -3,6 +3,7 @@ package com.negotium.Services.Main.impl;
 import com.negotium.DTOs.Credentials;
 import com.negotium.DTOs.*;
 import com.negotium.Factory.CommonFactoryAbstract;
+import javafx.print.Collation;
 import org.apache.commons.codec.language.bm.Lang;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 
 /**
  * <h1>Authentication service implementations</h1>
@@ -455,19 +457,22 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
 
     private int insertIntoCv(Header header, Connection connection) throws SQLException {
-        String credentialsStmt = "INSERT INTO cv (title, education, location, experience, preffered_job, users_id, created_date_time) " +
-                "VALUES (?,?,?,?,?,?,?)";
+        String credentialsStmt = "INSERT INTO cv (title, education, gcse, skills, location, " +
+                "experience, preffered_job, users_id, created_date_time) " +
+                "VALUES (?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement pStmtCvHeader = connection.prepareStatement(credentialsStmt, Statement.RETURN_GENERATED_KEYS);
 
         pStmtCvHeader.setString(1, header.getTitle());
         pStmtCvHeader.setString(2, header.getEducation());
-        pStmtCvHeader.setString(3, header.getLocation());
-        pStmtCvHeader.setString(4, header.getExperience());
-        pStmtCvHeader.setString(5, header.getPrefferedJob());
-        pStmtCvHeader.setInt(6, header.getUsersId());
+        pStmtCvHeader.setString(3, header.getGcse());
+        pStmtCvHeader.setString(4, header.getSkills());
+        pStmtCvHeader.setString(5, header.getLocation());
+        pStmtCvHeader.setString(6, header.getExperience());
+        pStmtCvHeader.setString(7, header.getPrefferedJob());
+        pStmtCvHeader.setInt(8, header.getUsersId());
         Date date = new Date(Calendar.getInstance().getTime().getTime());
-        pStmtCvHeader.setDate(7, date);
+        pStmtCvHeader.setDate(9, date);
 
         pStmtCvHeader.executeUpdate();
 
@@ -550,7 +555,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         try {
 
             Resume resume = new Resume();
-            ArrayList<Integer> cvIds = new ArrayList<Integer>();
+            HashSet cvIds = new HashSet();
 
             if(searchCriteria.getJobOrSectorPreference() != null && !searchCriteria.getJobOrSectorPreference().isEmpty()) {
                 String sql = "SELECT id FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
@@ -561,36 +566,92 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             }
 
             if(searchCriteria.getMinimumEducationLevel() != null && !searchCriteria.getMinimumEducationLevel().isEmpty()) {
-                String sql = "SELECT cv_id FROM cv WHERE education >= " + searchCriteria.getMinimumEducationLevel() + ";";
+                String sql = "SELECT id FROM cv WHERE education >= " + searchCriteria.getMinimumEducationLevel() + ";";
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("cv_id"));
+                    cvIds.add(resultSet.getInt("id"));
                 }
             }
 
             if(searchCriteria.getMinimumNumberOfGCSE() != null && !searchCriteria.getMinimumNumberOfGCSE().isEmpty()) {
-
+                String sql = "SELECT id FROM cv WHERE gcse >= " + searchCriteria.getMinimumNumberOfGCSE() + ";";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
             }
 
-            if(searchCriteria.getEducationalQualification() != null && !searchCriteria.getEducationalQualification().isEmpty()) {
+            String educationalQualification = searchCriteria.getEducationalQualification();
+            if(educationalQualification != null && !educationalQualification.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE education LIKE '%" + educationalQualification + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
 
+                //search in table 'educations'
+                String sqlEducation = "SELECT id FROM educations WHERE " +
+                        "major LIKE '%" + educationalQualification + "%' " +
+                        "OR description LIKE '%" + educationalQualification + "%';";
+                ResultSet resultSetEducations = statement.executeQuery(sqlEducation);
+                while (resultSetEducations.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
             }
 
-            if(searchCriteria.getProfessionalQualification() != null && !searchCriteria.getProfessionalQualification().isEmpty()) {
+            String professionalQualification = searchCriteria.getProfessionalQualification();
+            if(professionalQualification != null && !professionalQualification.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + professionalQualification + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
 
+                //search in table 'work_experiences'
+                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
+                        "title LIKE '%" + professionalQualification + "%' " +
+                        "OR description LIKE '%" + professionalQualification + "%';";
+                ResultSet resultSetWorkExperiences = statement.executeQuery(sqlEducation);
+                while (resultSetWorkExperiences.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
             }
 
-            if(searchCriteria.getSkills() != null && !searchCriteria.getSkills().isEmpty()) {
-
+            String skills = searchCriteria.getSkills();
+            if(skills != null && !skills.isEmpty()) {
+                String sql = "SELECT id FROM cv WHERE skills LIKE '%" + skills + "%';";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
             }
 
-            if(searchCriteria.getExperiences() != null && !searchCriteria.getExperiences().isEmpty()) {
+            String experiences = searchCriteria.getExperiences();
+            if(experiences != null && !experiences.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + experiences + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
 
+                //search in table 'work_experiences'
+                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
+                        "title LIKE '%" + experiences + "%' " +
+                        "OR description LIKE '%" + experiences + "%';";
+                ResultSet resultSetExperiences = statement.executeQuery(sqlEducation);
+                while (resultSetExperiences.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
             }
+
+            ArrayList<Integer> uniqueCvIds = new ArrayList();
 
         } catch (Exception e) {
 
-            LOG.debug(e.getMessage());
+                LOG.debug(e.getMessage());
 
         } finally {
             try { statement.close(); } catch (Exception e) { /* ignored */ }

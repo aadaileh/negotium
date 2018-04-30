@@ -108,7 +108,6 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    @Override
     public User login(@RequestBody Credentials credentials) throws SQLException {
         User user = mainServiceImplentations.verifyCredentials(credentials);
         return user;
@@ -304,31 +303,6 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     public ResumeComplete getCv(@PathVariable int cvId) throws SQLException {
         ResumeComplete cv = mainServiceImplentations.getCv(cvId);
         return cv;
-    }
-
-    @Override
-    public User getUser(String username) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Transaction> getAccountDetails(String clientId) {
-        return null;
-    }
-
-    @Override
-    public Response transferFunds(FundTransferRequest fundTransferRequest) {
-        return null;
-    }
-
-    @Override
-    public Response deposit(FundTransferRequest fundTransferRequest) {
-        return null;
-    }
-
-    @Override
-    public Response withdraw(FundTransferRequest fundTransferRequest) {
-        return null;
     }
 
     @ExceptionHandler

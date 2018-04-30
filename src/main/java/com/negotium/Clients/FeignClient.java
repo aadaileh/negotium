@@ -26,10 +26,6 @@ public interface FeignClient {
 
     @RequestLine("GET /{clientId}")
     @Headers("Content-Type: application/json")
-    ArrayList<Transaction> getAccountDetailsFromClient(@Param("clientId") String clientId);
-
-    @RequestLine("GET /{clientId}")
-    @Headers("Content-Type: application/json")
     double getAccountBalance(@Param("clientId") String clientId);
 
     @RequestLine("GET /api/account-service/get-and-count/")
@@ -39,18 +35,6 @@ public interface FeignClient {
     @RequestLine("GET /api/account-service/deliver-cash")
     @Headers("Content-Type: application/json")
     boolean deliverCash();
-
-    @RequestLine("POST")
-    @Headers("Content-Type: application/json")
-    Response verifyTransfer(FundTransferRequest fundTransferRequest);
-
-    @RequestLine("POST")
-    @Headers("Content-Type: application/json")
-    Boolean performTransfer(FundTransferRequest fundTransferRequest);
-
-    @RequestLine("PUT")
-    @Headers("Content-Type: application/json")
-    Boolean updateAccountTable(FundTransferRequest fundTransferRequest);
 
     @RequestLine("POST")
     @Headers("Content-Type: application/json")

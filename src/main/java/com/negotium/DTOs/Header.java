@@ -18,6 +18,8 @@ public class Header {
     private String title;
     private String location;
     private String education;
+    private String gcse;
+    private String skills;
     private String experience;
     private String prefferedJob;
     private String photo;
@@ -45,6 +47,22 @@ public class Header {
 
     public void setEducation(String education) {
         this.education = education;
+    }
+
+    public String getGcse() {
+        return gcse;
+    }
+
+    public void setGcse(String gcse) {
+        this.gcse = gcse;
+    }
+
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
     }
 
     public String getExperience() {
