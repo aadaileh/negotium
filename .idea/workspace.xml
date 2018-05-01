@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/abc-banking-group-0.0.1.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.abcbankinggroup.Clients.FeignClientTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.abcbankinggroup.Services.Authentication.AuthenticationServiceControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.abcbankinggroup.Services.Authentication.impl.AuthenticationServiceImplentationsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.abcbankinggroup.Clients.FeignClientTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.abcbankinggroup.Services.Authentication.AuthenticationServiceControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.abcbankinggroup.Services.Authentication.impl.AuthenticationServiceImplentationsTest.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,17 +44,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="799" column="40" lean-forward="true" selection-start-line="799" selection-start-column="40" selection-end-line="799" selection-end-column="40" />
+            <state relative-caret-position="236">
+              <caret line="796" column="66" selection-start-line="796" selection-start-column="66" selection-end-line="796" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#17381#17390#0" expanded="true" />
                 <element signature="e#40479#40480#0" expanded="true" />
                 <element signature="e#40523#40524#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -118,6 +140,7 @@
       <find>langua</find>
       <find>getCV</find>
       <find>getCV</find>
+      <find>spring-boot-autoconfigure</find>
     </findStrings>
     <replaceStrings>
       <replace>NEGOTIUM</replace>
@@ -179,6 +202,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -248,15 +272,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="negotium" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NEGOTIUM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="negotium" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="negotium" type="462c0819:PsiDirectoryNode" />
-              <item name="DTOs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NEGOTIUM" type="b2602c69:ProjectViewProjectNode" />
@@ -391,6 +406,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="1" />
@@ -566,13 +582,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
@@ -711,13 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="213" lean-forward="true" selection-start-line="213" selection-end-line="213" />
         </state>
       </provider>
     </entry>
@@ -963,16 +965,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/negotium/confirm.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="799" column="40" lean-forward="true" selection-start-line="799" selection-start-column="40" selection-end-line="799" selection-end-column="40" />
+        <state relative-caret-position="236">
+          <caret line="796" column="66" selection-start-line="796" selection-start-column="66" selection-end-line="796" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#17381#17390#0" expanded="true" />
             <element signature="e#40479#40480#0" expanded="true" />
             <element signature="e#40523#40524#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
         </state>
       </provider>
     </entry>
