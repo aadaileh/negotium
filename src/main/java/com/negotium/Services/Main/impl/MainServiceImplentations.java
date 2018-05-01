@@ -662,15 +662,20 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 LOG.debug(e.getMessage());
 
         } finally {
-            try { statement.close(); } catch (Exception e) { /* ignored */ }
-            try { connection.close(); } catch (Exception e) { /* ignored */ }
-
+            statement.close();
+            connection.close();
         }
 
         for (int cvId : cvIds) {
             ResumeComplete cv = getCv(cvId);
 
-            if(cv.getName() != null && !cv.getName().isEmpty() && cv.getSurname() != null && !cv.getSurname().isEmpty()) {
+            if(cv.getName() != null && !cv.getName().isEmpty() && cv.getSurname() != null && !cv.getSurname().isEmpty()
+                    && (
+                            (cv.getMobile() != null && !cv.getMobile().isEmpty()) ||
+                            (cv.getWebsite() != null && !cv.getWebsite().isEmpty()) ||
+                            (cv.getEmail() != null && !cv.getEmail().isEmpty())
+                        )
+            ) {
                 Resume resume = new Resume();
                 resume.setCvId(cvId);
                 resume.setName(cv.getName() + " " + cv.getSurname());
@@ -724,7 +729,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
                 resumeComplete.setGcse(CVResultSet.getString("gcse"));
                 resumeComplete.setSkills(CVResultSet.getString("skills"));
                 resumeComplete.setExperience(CVResultSet.getString("experience"));
-                resumeComplete.setPrefferedJob(CVResultSet.getString("prefferedJob"));
+                resumeComplete.setPrefferedJob(CVResultSet.getString("preffered_job"));
             }
             CVResultSet.close();
 
@@ -752,7 +757,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             personalInfoResultSet.close();
 
             //education
-            String educationSQL = "SELECT * FROM education WHERE cv_id = '" + cvId + "';";
+            String educationSQL = "SELECT * FROM educations WHERE cv_id = '" + cvId + "';";
             ResultSet educationResultSet = statement.executeQuery(educationSQL);
             while (educationResultSet.next()) {
                 resumeComplete.setInstitution(educationResultSet.getString("institution"));
@@ -776,7 +781,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             languageResultSet.close();
 
             //references
-            String referencesSQL = "SELECT * FROM references WHERE cv_id = '" + cvId + "';";
+            String referencesSQL = "SELECT * FROM cv_references WHERE cv_id = '" + cvId + "';";
             ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
             while (referencesResultSet.next()) {
                 resumeComplete.setReferenceName(referencesResultSet.getString("ref_name"));
@@ -806,8 +811,8 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             LOG.debug(e.getMessage());
 
         } finally {
-            try { statement.close(); } catch (Exception e) { /* ignored */ }
-            try { connection.close(); } catch (Exception e) { /* ignored */ }
+            statement.close();
+            connection.close();
         }
 
         return resumeComplete;

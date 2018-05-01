@@ -300,8 +300,8 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
-    public ResumeComplete getCv(@PathVariable int cvId) throws SQLException {
-        ResumeComplete cv = mainServiceImplentations.getCv(cvId);
+    public ResumeComplete getCv(@PathVariable int id) throws SQLException {
+        ResumeComplete cv = mainServiceImplentations.getCv(id);
         return cv;
     }
 
