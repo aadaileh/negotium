@@ -1,10 +1,7 @@
 package com.negotium.Services.Main.impl;
 
-import com.negotium.DTOs.Credentials;
 import com.negotium.DTOs.*;
 import com.negotium.Factory.CommonFactoryAbstract;
-import javafx.print.Collation;
-import org.apache.commons.codec.language.bm.Lang;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * <h1>Authentication service implementations</h1>
