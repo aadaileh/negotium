@@ -46,9 +46,13 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     private MainServiceImplentations mainServiceImplentations;
 
     /**
+     * <h1>Register new users</h1>
+     *
+     * <p>
      * Register new job-seekers to NEGOTIUM. This method saves entered data to
      * both tables: credentials, users, contact_information. It does generate a UUID token
      * that will be used in the confirmation process.
+     * </p>
      *
      * @return user user's data (if success), or null in case of failure
      *
@@ -69,9 +73,13 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
     }
 
     /**
-     * Confirm the new job-seekers registered to NEGOTIUM. This method checks the code
+     * <h1>Confirm the new job-seekers registered to NEGOTIUM.</h1>
+     *
+     * <p>
+     * This method checks the code
      * taken from link and compare it to the one in db, if matches, returns ok, otherwise
      * false.
+     * </p>
      *
      * @return boolean true if matches, false if not
      *

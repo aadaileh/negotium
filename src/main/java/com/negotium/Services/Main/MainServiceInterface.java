@@ -1,8 +1,10 @@
 package com.negotium.Services.Main;
 
 import com.negotium.DTOs.*;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,77 +25,128 @@ import java.util.ArrayList;
  * @since   26.01.2018
  */
 public interface MainServiceInterface {
-//
-//        /**
-//         * Method to verify the given credentials. Credentials can be either coming from ATM (card-id, pin) or
-//         * Online banking (username, password). This method makes a use of the login-service via Feign client.
-//         * It returns either the logged in user's data, in case of success. Or NULL, in case of failure.
-//         *
-//         * @param credentials contains user's credentials
-//         * @return user user's data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public User login(@RequestBody Credentials credentials) throws SQLException;
-//
-//        /**
-//         * Return the logged in user's data upon need. It returns either the requested user's data,
-//         * in case it is found, Or empty object, in case of failure.
-//         *
-//         * @param username contains user's username
-//         * @return user user's data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public User getUser(@PathVariable String username);
-//
-//        /**
-//         * Method to retrieve all transactions related to account based on the client-id. All
-//         * kind of transaction returned sorted according timestamp. If no results found, empty
-//         * Account object is returned.
-//         *
-//         * @param clientId contains client-id
-//         * @return Account transactions data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public ArrayList<Transaction> getAccountDetails(@PathVariable String clientId);
-//
-//        /**
-//         * Method to fullfill a fund transfer process. Usually the fund-transfer process consists from the following steps:
-//         * 1) get the available balance, 2) get transfer details 3) check transfer details by (comparing balance to request)
-//         * and (verifying benificiary details). 4) Update Account. 5) Add record to the main transfer table 6) Print receipt.
-//         * All these methods will be available in both transaction-service and account-service. These will be called from here.
-//         *
-//         * @param fundTransferRequest transfer's all related fields
-//         * @return Account transactions data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public Response transferFunds(@RequestBody FundTransferRequest fundTransferRequest);
-//
-//        /**
-//         * Method to deposit funds to the account. Usually the deposit process consists from the following steps:
-//         * 1) Initiate the mechanical process to get and count the money. 2) Update Account records. 3) Print receipt.
-//         * All these methods will be available in both transaction-service and account-service. These will be called from here.
-//         *
-//         * @param fundTransferRequest transfer's all related fields
-//         * @return Account transactions data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public Response deposit(@RequestBody FundTransferRequest fundTransferRequest);
-//
-//        /**
-//         * Method to withdraw money from ATM. Usually the withdrawal process consists from the following steps:
-//         * 1) get the available balance, 2) check transfer details by (comparing balance to request) 3) Update
-//         * Account. 4) Initiate mechanical process to deliver money 5) Print receipt.
-//         * All these methods will be available in both transaction-service and account-service. These will be called from here.
-//         *
-//         * @param fundTransferRequest transfer's all related fields
-//         * @return Account transactions data (if success), or null in case of failure
-//         *
-//         * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-//         */
-//        public Response withdraw(@RequestBody FundTransferRequest fundTransferRequest);
+
+
+    /**
+     * <h1>Register new users</h1>
+     *
+     * <p>
+     * Register new job-seekers to NEGOTIUM. This method saves entered data to
+     * both tables: credentials, users, contact_information. It does generate a UUID token
+     * that will be used in the confirmation process.
+     * </p>
+     *
+     * @param user users data
+     * @return users data enhanced with additional info (token)
+     * @throws SQLException
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public int registerUser(User user) throws SQLException;
+
+    /**
+     * <h1>Confirm the new job-seekers registered to NEGOTIUM.</h1>
+     *
+     * <p>
+     * This method checks the code
+     * taken from link and compare it to the one in db, if matches, returns ok, otherwise
+     * false.
+     * </p>
+     *
+     * @return boolean true if matches, false if not
+
+     * @throws SQLException
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Boolean confirm(@PathVariable String code) throws SQLException;
+
+
+    /**
+     * Verify the credentials by checking the database table credentials.
+     *
+     * @return User if credentials are coorect, or NULL if not
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public User login(@RequestBody Credentials credentials) throws SQLException;
+
+    /**
+     * Save the CV Header
+     *
+     * @return cv-id, the created CV-ID
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvHeader(@RequestBody Header header) throws SQLException;
+
+    /**
+     * Save the CV Personal Information
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvPersonalInformation(@RequestBody PersonalInformation personalInformation) throws SQLException;
+
+    /**
+     * Save the CV Contact Information
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvContactInformation(@RequestBody ContactInformation contactInformation) throws SQLException;
+
+    /**
+     * Save the CV Work experience
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvWorkExperience(@RequestBody WorkExperience workExperience) throws SQLException;
+
+    /**
+     * Saves the CV Education Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvEducation(@RequestBody Education education) throws SQLException;
+    /**
+     * Saves the CV Language Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvLanguage(@RequestBody Language language) throws SQLException;
+
+    /**
+     * Saves the CV References Section
+     *
+     * @return Response contains all related IDs
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public Response saveCvReference(@RequestBody Reference reference) throws SQLException;
+
+    /**
+     * Search CVs according several criteria
+     *
+     * @return Resumes contains all related searched fields
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException;
+
+
+    /**
+     * Return the whole CV data based on the given ID
+     *
+     * @return Resumes contains all related searched fields
+     *
+     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     */
+    public ResumeComplete getCv(@PathVariable int id) throws SQLException;
 }

@@ -32,6 +32,17 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * <h1>Register new users</h1>
+     * <p>
+     * Saves users data into proper tables after user fills in the registration form.
+     * Data still not valid till activating it by clicking on the activation link
+     * </p>
+     *
+     * @param user users data
+     * @return users data enhanced with additional info (token)
+     * @throws SQLException
+     */
     public User registerUser(User user) throws SQLException {
 
         dataSource = getDataSource();
