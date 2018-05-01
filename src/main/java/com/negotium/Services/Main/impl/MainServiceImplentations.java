@@ -706,6 +706,7 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
         Connection connection = getDataSource().getConnection();
         Statement statement = connection.createStatement();
         ResumeComplete resumeComplete = new ResumeComplete();
+        resumeComplete.setCvId(cvId);
 
         try {
 
