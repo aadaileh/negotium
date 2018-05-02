@@ -22,7 +22,7 @@ import java.util.HashSet;
  *
  * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
  * @version 1.0
- * @since   26.01.2018
+ * @since   16.04.2018
  */
 @Service
 public class MainServiceImplentations extends CommonFactoryAbstract {
@@ -42,6 +42,11 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
      * @param user users data
      * @return users data enhanced with additional info (token)
      * @throws SQLException
+     *
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
      */
     public User registerUser(User user) throws SQLException {
 
@@ -67,11 +72,25 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             LOG.debug(e.getMessage());
             return null;
 
-        } finally {
-            connection.close();
         }
     }
 
+    /**
+     * <h1>Confirm registration</h1>
+     *
+     * <p>
+     * Contains the implementation of all needed functions to confirm the registration via email
+     * </p>
+     *
+     * @param code the confirmation code send via email
+     * @return TRUE or FALSE
+     * @throws SQLException
+     *
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Boolean confirm(String code) throws SQLException {
 
         dataSource = getDataSource();
@@ -93,32 +112,37 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             LOG.debug(e.getMessage());
             return null;
 
-        } finally {
-            connection.close();
-
         }
     }
 
     /**
+     * <h1>
      * Method verifies the given credentials (username/card-id and password/pin)
-     * it returns the user object on success and empty user objecton failure.
+     * </h1>
+     *
+     * <p>
+     * It returns the user object on success and empty user objecton failure.
+     * </p>
      *
      * @param credentials username/card-id and password/pin
-     * @return user
+     * @return user the enhanced user object
      *
      * @throws SQLException
      *
-     * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
      */
     public User verifyCredentials(Credentials credentials) throws SQLException {
 
         dataSource = getDataSource();
-        Connection connection = dataSource.getConnection();
-        Statement statement = connection.createStatement();
         User user = new User();
         ResultSet resultSet = null;
 
         try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+
             String sql = "SELECT *, users.id as table_users_id " +
                     "FROM credentials " +
                     "JOIN users ON credentials.id = users.credentials_id " +
@@ -149,14 +173,28 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         } finally {
             try { resultSet.close(); } catch (Exception e) { /* ignored */ }
-            try { statement.close(); } catch (Exception e) { /* ignored */ }
-            try { connection.close(); } catch (Exception e) { /* ignored */ }
         }
 
         return user;
     }
 
-
+    /**
+     * <h1>
+     * Saving CV - Header Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Header section to the cv table
+     * </p>
+     *
+     * @param header all header section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvHeader(Header header) throws SQLException {
 
         dataSource = getDataSource();
@@ -179,10 +217,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - Personal Information Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Personal Information section to the cv table
+     * </p>
+     *
+     * @param personalInformation all Personal Information section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvPersonalInformation(PersonalInformation personalInformation) throws SQLException {
 
         dataSource = getDataSource();
@@ -207,10 +262,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - Contact Information Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Contact Information section to the cv table
+     * </p>
+     *
+     * @param contactInformation all Contact Information section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvContactInformation(ContactInformation contactInformation) throws SQLException {
 
         dataSource = getDataSource();
@@ -234,10 +306,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - Work Experience Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Work Experience section to the cv table
+     * </p>
+     *
+     * @param workExperience all work experience section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvWorkExperience(WorkExperience workExperience) throws SQLException {
 
         dataSource = getDataSource();
@@ -261,10 +350,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - Education Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Education section to the cv table
+     * </p>
+     *
+     * @param education all education section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvEducation(Education education) throws SQLException {
 
         dataSource = getDataSource();
@@ -288,10 +394,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - Language Section
+     * </h1>
+     *
+     * <p>
+     * Saves the Language section to the cv table
+     * </p>
+     *
+     * @param language all header section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvLanguage(Language language) throws SQLException {
 
         dataSource = getDataSource();
@@ -315,10 +438,27 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
-            connection.close();
+//            connection.close();
         }
     }
 
+    /**
+     * <h1>
+     * Saving CV - References Section
+     * </h1>
+     *
+     * <p>
+     * Saves the References section to the cv table
+     * </p>
+     *
+     * @param reference all reference section's fields
+     * @return response contains all Ids of sections
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
     public Response saveCvReference(Reference reference) throws SQLException {
 
         dataSource = getDataSource();
@@ -342,8 +482,351 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
             return response;
 
         } finally {
+//            connection.close();
+        }
+    }
+
+    /**
+     * <h1>
+     * Method to return the logged in user's data upon need.
+     * </h1>
+     *
+     * <p>
+     * It returns either the requested user's data, in case it is found, Or empty object, in case of failure.
+     * </p>
+     *
+     * @param username contains user's username
+     * @return user user's data (if success), or null in case of failure
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
+    public User returnUser(String username) throws SQLException {
+
+        dataSource = getDataSource();
+        Connection connection = null;
+        User user = new User();
+
+        try {
+            connection = dataSource.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(
+                    "SELECT * " +
+                            "FROM client " +
+                            "WHERE username_card_id = '" + username + "'");
+
+            while (resultSet.next()) {
+                user.setName(resultSet.getString("user_name"));
+                user.setEmail(resultSet.getString("user_email"));
+            }
+
+            return user;
+
+        } catch (Exception e) {
+            LOG.debug(e.getMessage());
+        } finally {
+//            connection.close();
+        }
+
+        return user;
+    }
+
+    /**
+     * <h1>
+     * Method searches in the available CV databases.
+     * </h1>
+     *
+     * <P>
+     *  All CV databse tables will be searched (full scan search) according searched parameters.
+     * </P>
+     *
+     * @param searchCriteria DTO contains all criteria used for the search
+     * @return List of found resumes
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
+    public ArrayList<Resume> search (SearchCriteria searchCriteria) throws SQLException {
+
+        Connection connection = getDataSource().getConnection();
+        Statement statement = connection.createStatement();
+        ArrayList<Resume> resumes = new ArrayList<>();
+        HashSet<Integer> cvIds = new HashSet<Integer>();
+
+        try {
+
+            if(searchCriteria.getJobOrSectorPreference() != null && !searchCriteria.getJobOrSectorPreference().isEmpty()) {
+                String sql = "SELECT id FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+            }
+
+            if(searchCriteria.getMinimumEducationLevel() != null && !searchCriteria.getMinimumEducationLevel().isEmpty()) {
+                String sql = "SELECT id FROM cv WHERE education >= " + searchCriteria.getMinimumEducationLevel() + ";";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+            }
+
+            if(searchCriteria.getMinimumNumberOfGCSE() != null && !searchCriteria.getMinimumNumberOfGCSE().isEmpty()) {
+                String sql = "SELECT id FROM cv WHERE gcse >= " + searchCriteria.getMinimumNumberOfGCSE() + ";";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+            }
+
+            String educationalQualification = searchCriteria.getEducationalQualification();
+            if(educationalQualification != null && !educationalQualification.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE education LIKE '%" + educationalQualification + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+
+                //search in table 'educations'
+                String sqlEducation = "SELECT id FROM educations WHERE " +
+                        "major LIKE '%" + educationalQualification + "%' " +
+                        "OR description LIKE '%" + educationalQualification + "%';";
+                ResultSet resultSetEducations = statement.executeQuery(sqlEducation);
+                while (resultSetEducations.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSetEducations.close();
+            }
+
+            String professionalQualification = searchCriteria.getProfessionalQualification();
+            if(professionalQualification != null && !professionalQualification.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + professionalQualification + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+
+                //search in table 'work_experiences'
+                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
+                        "title LIKE '%" + professionalQualification + "%' " +
+                        "OR description LIKE '%" + professionalQualification + "%';";
+                ResultSet resultSetWorkExperiences = statement.executeQuery(sqlEducation);
+                while (resultSetWorkExperiences.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSetWorkExperiences.close();
+            }
+
+            String skills = searchCriteria.getSkills();
+            if(skills != null && !skills.isEmpty()) {
+                String sql = "SELECT id FROM cv WHERE skills LIKE '%" + skills + "%';";
+                ResultSet resultSet = statement.executeQuery(sql);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+            }
+
+            String experiences = searchCriteria.getExperiences();
+            if(experiences != null && !experiences.isEmpty()) {
+                //search in table 'cv'
+                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + experiences + "%';";
+                ResultSet resultSet = statement.executeQuery(sqlCV);
+                while (resultSet.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSet.close();
+
+                //search in table 'work_experiences'
+                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
+                        "title LIKE '%" + experiences + "%' " +
+                        "OR description LIKE '%" + experiences + "%';";
+                ResultSet resultSetExperiences = statement.executeQuery(sqlEducation);
+                while (resultSetExperiences.next()) {
+                    cvIds.add(resultSet.getInt("id"));
+                }
+                resultSetExperiences.close();
+            }
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+
+        } finally {
+            statement.close();
             connection.close();
         }
+
+        for (int cvId : cvIds) {
+            ResumeComplete cv = getCv(cvId);
+
+            if(cv.getName() != null && !cv.getName().isEmpty() && cv.getSurname() != null && !cv.getSurname().isEmpty()
+                    && (
+                    (cv.getMobile() != null && !cv.getMobile().isEmpty()) ||
+                            (cv.getWebsite() != null && !cv.getWebsite().isEmpty()) ||
+                            (cv.getEmail() != null && !cv.getEmail().isEmpty())
+            )
+                    ) {
+                Resume resume = new Resume();
+                resume.setCvId(cvId);
+                resume.setName(cv.getName() + " " + cv.getSurname());
+                resume.setContactData("Email: " + cv.getEmail() + ", Mobile: " + cv.getMobile() + ", Website: " + cv.getWebsite());
+                resume.setEducation(cv.getEducation());
+                resume.setExperience(cv.getExperience());
+
+                resumes.add(resume);
+            }
+        }
+
+        return resumes;
+    }
+
+
+
+    /**
+     * <h1>
+     *     Method Returns the whole CV data based on the given ID
+     * </h1>
+     *
+     * <p>
+     *     All fields are collected and returned based on the given cv-Id. This is used for the PDF creation functions.
+     *     And in the search
+     * </p>
+     *
+     * @param cvId The ID of the requested CV
+     * @return All fields of a CV
+     * @throws SQLException
+     *
+     * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
+     * @version 1.0
+     * @since   16.04.2018
+     */
+    public ResumeComplete getCv (int cvId) throws SQLException {
+
+        Connection connection = getDataSource().getConnection();
+        Statement statement = connection.createStatement();
+        ResumeComplete resumeComplete = new ResumeComplete();
+        resumeComplete.setCvId(cvId);
+
+        try {
+
+            //users
+            String usersSql = "SELECT * FROM users WHERE cv_id = '" + cvId + "';";
+            ResultSet usersResultSet = statement.executeQuery(usersSql);
+            while (usersResultSet.next()) {
+                resumeComplete.setName(usersResultSet.getString("name"));
+                resumeComplete.setSurname(usersResultSet.getString("surname"));
+            }
+            usersResultSet.close();
+
+            //cv (header)
+            String CVSql = "SELECT * FROM cv WHERE id = '" + cvId + "';";
+            ResultSet CVResultSet = statement.executeQuery(CVSql);
+            while (CVResultSet.next()) {
+                resumeComplete.setTitle(CVResultSet.getString("title"));
+                resumeComplete.setCreationDate(CVResultSet.getString("created_date_time"));
+                resumeComplete.setEducation(CVResultSet.getString("education"));
+                resumeComplete.setLocation(CVResultSet.getString("location"));
+                resumeComplete.setGcse(CVResultSet.getString("gcse"));
+                resumeComplete.setSkills(CVResultSet.getString("skills"));
+                resumeComplete.setExperience(CVResultSet.getString("experience"));
+                resumeComplete.setPrefferedJob(CVResultSet.getString("preffered_job"));
+            }
+            CVResultSet.close();
+
+            //contact_information
+            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + cvId + "';";
+            ResultSet CIresultSet = statement.executeQuery(CIsql);
+            while (CIresultSet.next()) {
+                resumeComplete.setEmail(CIresultSet.getString("email"));
+                resumeComplete.setMobile(CIresultSet.getString("mobile"));
+                resumeComplete.setWebsite(CIresultSet.getString("website"));
+            }
+            CIresultSet.close();
+
+            //personal_information
+            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + cvId + "';";
+            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
+            while (personalInfoResultSet.next()) {
+                resumeComplete.setBirthdate(personalInfoResultSet.getString("birthdate"));
+                resumeComplete.setGender(personalInfoResultSet.getString("gender"));
+                resumeComplete.setNationality(personalInfoResultSet.getString("nationality"));
+                resumeComplete.setResidenceCountry(personalInfoResultSet.getString("residence_country"));
+                resumeComplete.setMaritalStatus(personalInfoResultSet.getString("marital_status"));
+                resumeComplete.setNumberOfDependencies(personalInfoResultSet.getString("number_of_dependencies"));
+            }
+            personalInfoResultSet.close();
+
+            //education
+            String educationSQL = "SELECT * FROM educations WHERE cv_id = '" + cvId + "';";
+            ResultSet educationResultSet = statement.executeQuery(educationSQL);
+            while (educationResultSet.next()) {
+                resumeComplete.setInstitution(educationResultSet.getString("institution"));
+                resumeComplete.setDegree(educationResultSet.getString("degree"));
+                resumeComplete.setMajor(educationResultSet.getString("major"));
+                resumeComplete.setCompletionDate(educationResultSet.getString("completion_date_time"));
+                resumeComplete.setCountry(educationResultSet.getString("country"));
+                resumeComplete.setCity(educationResultSet.getString("city"));
+                resumeComplete.setGrade(educationResultSet.getString("grade"));
+                resumeComplete.setEducationDescription(educationResultSet.getString("description"));
+            }
+            educationResultSet.close();
+
+            //languages
+            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + cvId + "';";
+            ResultSet languageResultSet = statement.executeQuery(languageSQL);
+            while (languageResultSet.next()) {
+                resumeComplete.setLanguage(languageResultSet.getString("language"));
+                resumeComplete.setLanguageLevel(languageResultSet.getString("lang_level"));
+            }
+            languageResultSet.close();
+
+            //references
+            String referencesSQL = "SELECT * FROM cv_references WHERE cv_id = '" + cvId + "';";
+            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
+            while (referencesResultSet.next()) {
+                resumeComplete.setReferenceName(referencesResultSet.getString("ref_name"));
+                resumeComplete.setReferenceJobTitle(referencesResultSet.getString("job_title"));
+                resumeComplete.setReferenceCompanyName(referencesResultSet.getString("company_name"));
+                resumeComplete.setReferencePhone(referencesResultSet.getString("phone"));
+                resumeComplete.setReferenceEmail(referencesResultSet.getString("email"));
+            }
+            referencesResultSet.close();
+
+            //work_experiences
+            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + cvId + "';";
+            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
+            while (workExperienceResultSet.next()) {
+                resumeComplete.setStartDate(workExperienceResultSet.getString("start_date_time"));
+                resumeComplete.setEndDate(workExperienceResultSet.getString("end_date_time"));
+                resumeComplete.setWorkTitle(workExperienceResultSet.getString("title"));
+                resumeComplete.setEmployer(workExperienceResultSet.getString("employer"));
+                resumeComplete.setWorkDescription(workExperienceResultSet.getString("description"));
+            }
+            workExperienceResultSet.close();
+
+            return resumeComplete;
+
+        } catch (Exception e) {
+
+            LOG.debug(e.getMessage());
+
+        } finally {
+            statement.close();
+            connection.close();
+        }
+
+        return resumeComplete;
     }
 
     private Long insertIntoCredentials(User user, Connection connection, String token) throws SQLException {
@@ -501,329 +984,6 @@ public class MainServiceImplentations extends CommonFactoryAbstract {
 
         String usersStmt = "UPDATE users SET cv_id = " + cvId + " WHERE id = " + header.getUsersId();
         connection.createStatement().executeUpdate(usersStmt);
-    }
-
-    /**
-     * Method to return the logged in user's data upon need. It returns either the requested user's data,
-     * in case it is found, Or empty object, in case of failure.
-     *
-     * @param username contains user's username
-     * @return user user's data (if success), or null in case of failure
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    public User returnUser(String username) throws SQLException {
-
-        dataSource = getDataSource();
-        Connection connection = null;
-        User user = new User();
-
-        try {
-            connection = dataSource.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet resultSet = stmt.executeQuery(
-                    "SELECT * " +
-                            "FROM client " +
-                            "WHERE username_card_id = '" + username + "'");
-
-            while (resultSet.next()) {
-                user.setName(resultSet.getString("user_name"));
-                user.setEmail(resultSet.getString("user_email"));
-            }
-
-            return user;
-
-        } catch (Exception e) {
-
-            LOG.debug(e.getMessage());
-
-        } finally {
-
-            connection.close();
-
-        }
-
-        return user;
-    }
-
-    /**
-     * Method searches in the available CV databases.
-     *
-     * @param searchCriteria DTO contains all criteria used for the search
-     * @return List of found resumes
-     * @throws SQLException
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    public ArrayList<Resume> search (SearchCriteria searchCriteria) throws SQLException {
-
-        Connection connection = getDataSource().getConnection();
-        Statement statement = connection.createStatement();
-        ArrayList<Resume> resumes = new ArrayList<>();
-        HashSet<Integer> cvIds = new HashSet<Integer>();
-
-        try {
-
-            if(searchCriteria.getJobOrSectorPreference() != null && !searchCriteria.getJobOrSectorPreference().isEmpty()) {
-                String sql = "SELECT id FROM cv WHERE preffered_job like '%" + searchCriteria.getJobOrSectorPreference() + "%';";
-                ResultSet resultSet = statement.executeQuery(sql);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-            }
-
-            if(searchCriteria.getMinimumEducationLevel() != null && !searchCriteria.getMinimumEducationLevel().isEmpty()) {
-                String sql = "SELECT id FROM cv WHERE education >= " + searchCriteria.getMinimumEducationLevel() + ";";
-                ResultSet resultSet = statement.executeQuery(sql);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-            }
-
-            if(searchCriteria.getMinimumNumberOfGCSE() != null && !searchCriteria.getMinimumNumberOfGCSE().isEmpty()) {
-                String sql = "SELECT id FROM cv WHERE gcse >= " + searchCriteria.getMinimumNumberOfGCSE() + ";";
-                ResultSet resultSet = statement.executeQuery(sql);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-            }
-
-            String educationalQualification = searchCriteria.getEducationalQualification();
-            if(educationalQualification != null && !educationalQualification.isEmpty()) {
-                //search in table 'cv'
-                String sqlCV = "SELECT id FROM cv WHERE education LIKE '%" + educationalQualification + "%';";
-                ResultSet resultSet = statement.executeQuery(sqlCV);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-
-                //search in table 'educations'
-                String sqlEducation = "SELECT id FROM educations WHERE " +
-                        "major LIKE '%" + educationalQualification + "%' " +
-                        "OR description LIKE '%" + educationalQualification + "%';";
-                ResultSet resultSetEducations = statement.executeQuery(sqlEducation);
-                while (resultSetEducations.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSetEducations.close();
-            }
-
-            String professionalQualification = searchCriteria.getProfessionalQualification();
-            if(professionalQualification != null && !professionalQualification.isEmpty()) {
-                //search in table 'cv'
-                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + professionalQualification + "%';";
-                ResultSet resultSet = statement.executeQuery(sqlCV);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-
-                //search in table 'work_experiences'
-                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
-                        "title LIKE '%" + professionalQualification + "%' " +
-                        "OR description LIKE '%" + professionalQualification + "%';";
-                ResultSet resultSetWorkExperiences = statement.executeQuery(sqlEducation);
-                while (resultSetWorkExperiences.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSetWorkExperiences.close();
-            }
-
-            String skills = searchCriteria.getSkills();
-            if(skills != null && !skills.isEmpty()) {
-                String sql = "SELECT id FROM cv WHERE skills LIKE '%" + skills + "%';";
-                ResultSet resultSet = statement.executeQuery(sql);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-            }
-
-            String experiences = searchCriteria.getExperiences();
-            if(experiences != null && !experiences.isEmpty()) {
-                //search in table 'cv'
-                String sqlCV = "SELECT id FROM cv WHERE experience LIKE '%" + experiences + "%';";
-                ResultSet resultSet = statement.executeQuery(sqlCV);
-                while (resultSet.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSet.close();
-
-                //search in table 'work_experiences'
-                String sqlEducation = "SELECT id FROM work_experiences WHERE " +
-                        "title LIKE '%" + experiences + "%' " +
-                        "OR description LIKE '%" + experiences + "%';";
-                ResultSet resultSetExperiences = statement.executeQuery(sqlEducation);
-                while (resultSetExperiences.next()) {
-                    cvIds.add(resultSet.getInt("id"));
-                }
-                resultSetExperiences.close();
-            }
-
-        } catch (Exception e) {
-
-                LOG.debug(e.getMessage());
-
-        } finally {
-            statement.close();
-            connection.close();
-        }
-
-        for (int cvId : cvIds) {
-            ResumeComplete cv = getCv(cvId);
-
-            if(cv.getName() != null && !cv.getName().isEmpty() && cv.getSurname() != null && !cv.getSurname().isEmpty()
-                    && (
-                            (cv.getMobile() != null && !cv.getMobile().isEmpty()) ||
-                            (cv.getWebsite() != null && !cv.getWebsite().isEmpty()) ||
-                            (cv.getEmail() != null && !cv.getEmail().isEmpty())
-                        )
-            ) {
-                Resume resume = new Resume();
-                resume.setCvId(cvId);
-                resume.setName(cv.getName() + " " + cv.getSurname());
-                resume.setContactData("Email: " + cv.getEmail() + ", Mobile: " + cv.getMobile() + ", Website: " + cv.getWebsite());
-                resume.setEducation(cv.getEducation());
-                resume.setExperience(cv.getExperience());
-
-                resumes.add(resume);
-            }
-        }
-
-        return resumes;
-    }
-
-
-
-    /**
-     * Method Returns the whole CV data based on the given ID
-     *
-     * @param cvId The ID of the requested CV
-     * @return All fields of a CV
-     * @throws SQLException
-     *
-     * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
-     */
-    public ResumeComplete getCv (int cvId) throws SQLException {
-
-        Connection connection = getDataSource().getConnection();
-        Statement statement = connection.createStatement();
-        ResumeComplete resumeComplete = new ResumeComplete();
-        resumeComplete.setCvId(cvId);
-
-        try {
-
-            //users
-            String usersSql = "SELECT * FROM users WHERE cv_id = '" + cvId + "';";
-            ResultSet usersResultSet = statement.executeQuery(usersSql);
-            while (usersResultSet.next()) {
-                resumeComplete.setName(usersResultSet.getString("name"));
-                resumeComplete.setSurname(usersResultSet.getString("surname"));
-            }
-            usersResultSet.close();
-
-            //cv (header)
-            String CVSql = "SELECT * FROM cv WHERE id = '" + cvId + "';";
-            ResultSet CVResultSet = statement.executeQuery(CVSql);
-            while (CVResultSet.next()) {
-                resumeComplete.setTitle(CVResultSet.getString("title"));
-                resumeComplete.setCreationDate(CVResultSet.getString("created_date_time"));
-                resumeComplete.setEducation(CVResultSet.getString("education"));
-                resumeComplete.setLocation(CVResultSet.getString("location"));
-                resumeComplete.setGcse(CVResultSet.getString("gcse"));
-                resumeComplete.setSkills(CVResultSet.getString("skills"));
-                resumeComplete.setExperience(CVResultSet.getString("experience"));
-                resumeComplete.setPrefferedJob(CVResultSet.getString("preffered_job"));
-            }
-            CVResultSet.close();
-
-            //contact_information
-            String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + cvId + "';";
-            ResultSet CIresultSet = statement.executeQuery(CIsql);
-            while (CIresultSet.next()) {
-                resumeComplete.setEmail(CIresultSet.getString("email"));
-                resumeComplete.setMobile(CIresultSet.getString("mobile"));
-                resumeComplete.setWebsite(CIresultSet.getString("website"));
-            }
-            CIresultSet.close();
-
-            //personal_information
-            String personalInfoSQL = "SELECT * FROM personal_information WHERE cv_id = '" + cvId + "';";
-            ResultSet personalInfoResultSet = statement.executeQuery(personalInfoSQL);
-            while (personalInfoResultSet.next()) {
-                resumeComplete.setBirthdate(personalInfoResultSet.getString("birthdate"));
-                resumeComplete.setGender(personalInfoResultSet.getString("gender"));
-                resumeComplete.setNationality(personalInfoResultSet.getString("nationality"));
-                resumeComplete.setResidenceCountry(personalInfoResultSet.getString("residence_country"));
-                resumeComplete.setMaritalStatus(personalInfoResultSet.getString("marital_status"));
-                resumeComplete.setNumberOfDependencies(personalInfoResultSet.getString("number_of_dependencies"));
-            }
-            personalInfoResultSet.close();
-
-            //education
-            String educationSQL = "SELECT * FROM educations WHERE cv_id = '" + cvId + "';";
-            ResultSet educationResultSet = statement.executeQuery(educationSQL);
-            while (educationResultSet.next()) {
-                resumeComplete.setInstitution(educationResultSet.getString("institution"));
-                resumeComplete.setDegree(educationResultSet.getString("degree"));
-                resumeComplete.setMajor(educationResultSet.getString("major"));
-                resumeComplete.setCompletionDate(educationResultSet.getString("completion_date_time"));
-                resumeComplete.setCountry(educationResultSet.getString("country"));
-                resumeComplete.setCity(educationResultSet.getString("city"));
-                resumeComplete.setGrade(educationResultSet.getString("grade"));
-                resumeComplete.setEducationDescription(educationResultSet.getString("description"));
-            }
-            educationResultSet.close();
-
-            //languages
-            String languageSQL = "SELECT * FROM languages WHERE cv_id = '" + cvId + "';";
-            ResultSet languageResultSet = statement.executeQuery(languageSQL);
-            while (languageResultSet.next()) {
-                resumeComplete.setLanguage(languageResultSet.getString("language"));
-                resumeComplete.setLanguageLevel(languageResultSet.getString("lang_level"));
-            }
-            languageResultSet.close();
-
-            //references
-            String referencesSQL = "SELECT * FROM cv_references WHERE cv_id = '" + cvId + "';";
-            ResultSet referencesResultSet = statement.executeQuery(referencesSQL);
-            while (referencesResultSet.next()) {
-                resumeComplete.setReferenceName(referencesResultSet.getString("ref_name"));
-                resumeComplete.setReferenceJobTitle(referencesResultSet.getString("job_title"));
-                resumeComplete.setReferenceCompanyName(referencesResultSet.getString("company_name"));
-                resumeComplete.setReferencePhone(referencesResultSet.getString("phone"));
-                resumeComplete.setReferenceEmail(referencesResultSet.getString("email"));
-            }
-            referencesResultSet.close();
-
-            //work_experiences
-            String workExperienceSQL = "SELECT * FROM work_experiences WHERE cv_id = '" + cvId + "';";
-            ResultSet workExperienceResultSet = statement.executeQuery(workExperienceSQL);
-            while (workExperienceResultSet.next()) {
-                resumeComplete.setStartDate(workExperienceResultSet.getString("start_date_time"));
-                resumeComplete.setEndDate(workExperienceResultSet.getString("end_date_time"));
-                resumeComplete.setWorkTitle(workExperienceResultSet.getString("title"));
-                resumeComplete.setEmployer(workExperienceResultSet.getString("employer"));
-                resumeComplete.setWorkDescription(workExperienceResultSet.getString("description"));
-            }
-            workExperienceResultSet.close();
-
-            return resumeComplete;
-
-        } catch (Exception e) {
-
-            LOG.debug(e.getMessage());
-
-        } finally {
-            statement.close();
-            connection.close();
-        }
-
-        return resumeComplete;
     }
 
     private int insertIntoPersonalInformation(PersonalInformation pi, Connection connection) throws SQLException {

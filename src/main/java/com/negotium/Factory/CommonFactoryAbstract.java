@@ -66,7 +66,7 @@ public abstract class CommonFactoryAbstract {
      *
      * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    protected DataSource getDataSource() {
+    public DataSource getDataSource() {
 
         DataSource dataSource = null;
 

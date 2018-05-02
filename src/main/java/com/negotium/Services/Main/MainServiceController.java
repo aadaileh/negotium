@@ -320,4 +320,9 @@ public class MainServiceController extends CommonFactoryAbstract implements Main
 
         response.sendError(HttpStatus.BAD_REQUEST.value());
     }
+
+    /** ONLY DONE FOR UNIT-TESTING PURPOSES.*/
+    public void setMainServiceImplentations(MainServiceImplentations mainServiceImplentations) {
+        this.mainServiceImplentations = mainServiceImplentations;
+    }
 }
