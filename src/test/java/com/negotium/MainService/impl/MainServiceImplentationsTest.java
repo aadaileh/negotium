@@ -1,9 +1,8 @@
-package com.negotium.Services.Main.impl;
+package com.negotium.MainService.impl;
 
-import com.negotium.Connection.DatabaseConnectionSingleton;
+import com.negotium.Database.Connection.DatabaseConnectionSingleton;
 import com.negotium.DTOs.*;
-import com.negotium.Factory.CommonFactoryAbstract;
-import org.junit.After;
+import com.negotium.Database.Factory.DatabaseFactoryAbstract;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +14,9 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -53,7 +48,7 @@ public class MainServiceImplentationsTest {
     DatabaseConnectionSingleton databaseConnectionSingletonMock;
 
     @Mock
-    CommonFactoryAbstract commonFactoryAbstractMock;
+    DatabaseFactoryAbstract databaseFactoryAbstractMock;
 
     @Mock
     Statement statementMock;
@@ -68,7 +63,7 @@ public class MainServiceImplentationsTest {
         cut.setDataSource(dataSourceMock);
 
         when(databaseConnectionSingletonMock.dataSource()).thenReturn(dataSourceMock);
-        when(commonFactoryAbstractMock.getDataSource()).thenReturn(dataSourceMock);
+        when(databaseFactoryAbstractMock.getDataSource()).thenReturn(dataSourceMock);
         when(dataSourceMock.getConnection()).thenReturn(connectionMock);
         when(connectionMock.createStatement()).thenReturn(statementMock);
     }

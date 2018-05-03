@@ -1,1 +1,3 @@
-com\negotium\DTOs\AccountTest.class
+com\negotium\Database\Connection\DatabaseConnectionSingletonTest.class
+com\negotium\Database\Factory\DatabaseFactoryAbstractTest.class
+com\negotium\MainService\impl\MainServiceImplentationsTest.class

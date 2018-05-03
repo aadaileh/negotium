@@ -1,4 +1,4 @@
-package com.negotium.Services.Main;
+package com.negotium.MainService;
 
 import com.negotium.DTOs.*;
 import io.swagger.annotations.ApiOperation;

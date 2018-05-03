@@ -1,14 +1,7 @@
-package com.negotium.Factory;
+package com.negotium.Database.Factory;
 
-import com.negotium.Clients.FeignClient;
-import com.negotium.Connection.DatabaseConnectionSingleton;
-import com.negotium.Services.Main.MainServiceController;
-import feign.Feign;
+import com.negotium.Database.Connection.DatabaseConnectionSingleton;
 import feign.auth.BasicAuthRequestInterceptor;
-import feign.gson.GsonDecoder;
-import feign.gson.GsonEncoder;
-import feign.okhttp.OkHttpClient;
-import feign.slf4j.Slf4jLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +12,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 /**
- * <h1>CommonFactoryAbstract Abstract Class</h1>
+ * <h1>DatabaseFactoryAbstract Abstract Class</h1>
  *
  * <p>
  * Contains the necessary methods which are used in different places. It is introduced
@@ -32,9 +25,9 @@ import java.sql.SQLException;
  * @since   26.01.2018
  */
 @Component
-public abstract class CommonFactoryAbstract {
+public abstract class DatabaseFactoryAbstract {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(CommonFactoryAbstract.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(DatabaseFactoryAbstract.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;

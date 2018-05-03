@@ -1,8 +1,8 @@
-package com.negotium.Services.Main;
+package com.negotium.MainService;
 
 import com.negotium.DTOs.*;
-import com.negotium.Factory.CommonFactoryAbstract;
-import com.negotium.Services.Main.impl.MainServiceImplentations;
+import com.negotium.Database.Factory.DatabaseFactoryAbstract;
+import com.negotium.MainService.impl.MainServiceImplentations;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -38,7 +38,7 @@ import java.util.ArrayList;
 @EnableDiscoveryClient
 @CrossOrigin(origins = "*", maxAge = 3600)
 @EnableSwagger2
-public class MainServiceController extends CommonFactoryAbstract implements MainServiceInterface {
+public class MainServiceController extends DatabaseFactoryAbstract implements MainServiceInterface {
 
     private static final Logger LOG = LoggerFactory.getLogger(MainServiceController.class);
 

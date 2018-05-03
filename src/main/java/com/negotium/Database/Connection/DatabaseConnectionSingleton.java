@@ -1,4 +1,4 @@
-package com.negotium.Connection;
+package com.negotium.Database.Connection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

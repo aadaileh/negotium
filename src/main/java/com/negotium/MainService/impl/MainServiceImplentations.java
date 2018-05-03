@@ -1,7 +1,7 @@
-package com.negotium.Services.Main.impl;
+package com.negotium.MainService.impl;
 
 import com.negotium.DTOs.*;
-import com.negotium.Factory.CommonFactoryAbstract;
+import com.negotium.Database.Factory.DatabaseFactoryAbstract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.util.HashSet;
  * @since   16.04.2018
  */
 @Service
-public class MainServiceImplentations extends CommonFactoryAbstract {
+public class MainServiceImplentations extends DatabaseFactoryAbstract {
 
     private static final Logger LOG = LoggerFactory.getLogger(MainServiceImplentations.class);
 
