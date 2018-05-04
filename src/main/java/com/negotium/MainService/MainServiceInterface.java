@@ -1,30 +1,26 @@
 package com.negotium.MainService;
 
 import com.negotium.DTOs.*;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * <h1>Main Service Interface for the Coursework: ABC Banking Group</h1>
+ * <h1>Main Service Interface for the Coursework: NEGOTIUM</h1>
  *
  * <p>
  * Here is the declaration and definition of all methods implemented in the
  * related controller. It is always the first point to get requests and
  * distribute them to different other services. The whole communication is
- * done based on the NetFlix Feign Client. This service negotiate with:
- * Authentication-service, Account-service and Transaction-service.
+ * done based on the NetFlix Feign Client.
  * </p>
  *
  * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
  * @version 1.0
  * @since   26.01.2018
  */
-public interface MainServiceInterface {
+interface MainServiceInterface {
 
 
     /**
@@ -41,7 +37,7 @@ public interface MainServiceInterface {
      * @throws SQLException
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public int registerUser(User user) throws SQLException;
+    int registerUser(User user) throws SQLException;
 
     /**
      * <h1>Confirm the new job-seekers registered to NEGOTIUM.</h1>
@@ -57,7 +53,7 @@ public interface MainServiceInterface {
      * @throws SQLException
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Boolean confirm(@PathVariable String code) throws SQLException;
+    Boolean confirm(@PathVariable String code) throws SQLException;
 
 
     /**
@@ -67,7 +63,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public User login(@RequestBody Credentials credentials) throws SQLException;
+    User login(@RequestBody Credentials credentials) throws SQLException;
 
     /**
      * Save the CV Header
@@ -76,7 +72,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvHeader(@RequestBody Header header) throws SQLException;
+    Response saveCvHeader(@RequestBody Header header) throws SQLException;
 
     /**
      * Save the CV Personal Information
@@ -85,7 +81,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvPersonalInformation(@RequestBody PersonalInformation personalInformation) throws SQLException;
+    Response saveCvPersonalInformation(@RequestBody PersonalInformation personalInformation) throws SQLException;
 
     /**
      * Save the CV Contact Information
@@ -94,7 +90,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvContactInformation(@RequestBody ContactInformation contactInformation) throws SQLException;
+    Response saveCvContactInformation(@RequestBody ContactInformation contactInformation) throws SQLException;
 
     /**
      * Save the CV Work experience
@@ -103,7 +99,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvWorkExperience(@RequestBody WorkExperience workExperience) throws SQLException;
+    Response saveCvWorkExperience(@RequestBody WorkExperience workExperience) throws SQLException;
 
     /**
      * Saves the CV Education Section
@@ -112,7 +108,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvEducation(@RequestBody Education education) throws SQLException;
+    Response saveCvEducation(@RequestBody Education education) throws SQLException;
     /**
      * Saves the CV Language Section
      *
@@ -120,7 +116,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvLanguage(@RequestBody Language language) throws SQLException;
+    Response saveCvLanguage(@RequestBody Language language) throws SQLException;
 
     /**
      * Saves the CV References Section
@@ -129,7 +125,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public Response saveCvReference(@RequestBody Reference reference) throws SQLException;
+    Response saveCvReference(@RequestBody Reference reference) throws SQLException;
 
     /**
      * Search CVs according several criteria
@@ -138,7 +134,7 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException;
+    ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException;
 
 
     /**
@@ -148,5 +144,5 @@ public interface MainServiceInterface {
      *
      * @Author Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public ResumeComplete getCv(@PathVariable int id) throws SQLException;
+    ResumeComplete getCv(@PathVariable int id) throws SQLException;
 }

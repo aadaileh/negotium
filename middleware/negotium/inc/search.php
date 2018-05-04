@@ -101,7 +101,7 @@ foreach ($data as $k => $v) {
   if($v->education == 5) echo "<td>Master's degree</td>";
   if($v->education == 6) {echo "<td>Doctorate</td>";}
   echo"    <td>".$v->experience."</td>";
-  echo"    <td><a class=\"button\" href=\"#\" style=\"background: #525252; padding: 4px 10px;\">Download&nbsp;CV</a></td>";
+  echo"    <td><a class=\"button\" href=\"pdf.php?cvid=".$v->cvId."\" style=\"background: #525252; padding: 4px 10px;\">Download&nbsp;CV</a></td>";
   echo"  </tr>";
 }
 

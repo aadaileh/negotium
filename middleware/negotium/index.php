@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
+$cvid = $_SESSION["cvId"];
+$pic = "images/ahmed-adaileh.jpg";
+
+//echo "<pre>";
+//print_r($_SESSION);
+//echo "</pre>";
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
@@ -89,7 +104,7 @@
 
          <div class="three columns">
 
-            <img class="profile-pic"  src="images/ahmed-adaileh-foto.1024x1024.jpg" alt="Ahmed Al-Adaileh" />
+            <img class="profile-pic"  src="<?php echo $pic;?>" alt="Ahmed Al-Adaileh" />
 
          </div>
 
@@ -123,7 +138,7 @@
 
                <div class="columns download">
                   <p>
-                     <a href="pdf.php" class="button"><i class="fa fa-download"></i>Download Resume</a>
+                     <a href="pdf.php?cvid=<?php echo $cvid;?>" class="button" target="_blank"><i class="fa fa-download"></i>Download Resume</a>
                   </p>
                </div>
 

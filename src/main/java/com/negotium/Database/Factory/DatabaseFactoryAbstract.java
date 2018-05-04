@@ -27,7 +27,7 @@ import java.sql.SQLException;
 @Component
 public abstract class DatabaseFactoryAbstract {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(DatabaseFactoryAbstract.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DatabaseFactoryAbstract.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
@@ -59,7 +59,7 @@ public abstract class DatabaseFactoryAbstract {
      *
      * @Author Ahmed Al-Adaileh <k1560383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      */
-    public DataSource getDataSource() {
+    public DataSource getDataSource() throws SQLException {
 
         DataSource dataSource = null;
 
@@ -68,14 +68,8 @@ public abstract class DatabaseFactoryAbstract {
         databaseConnectionSingleton.setUsername(username);
         databaseConnectionSingleton.setPassword(password);
 
-        try {
-            dataSource = databaseConnectionSingleton.dataSource();
-            LOG.info("DataSource successfully initialized");
-            return dataSource;
-        } catch (SQLException e) {
-            LOG.error("something went wrong while initializing the DataSource Message: [" + e.getMessage() + "]");
-        }
-
+        dataSource = databaseConnectionSingleton.dataSource();
+        LOG.info("DataSource successfully initialized");
         return dataSource;
     }
 

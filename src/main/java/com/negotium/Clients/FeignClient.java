@@ -5,8 +5,6 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
-import java.util.ArrayList;
-
 /**
  * <h1>FeignClient Interface</h1>
  *
@@ -24,17 +22,13 @@ public interface FeignClient {
     @RequestLine("GET /{username}")
     User getUserDetails(@Param("username") String username);
 
-    @RequestLine("GET /{clientId}")
-    @Headers("Content-Type: application/json")
-    double getAccountBalance(@Param("clientId") String clientId);
-
     @RequestLine("GET /api/account-service/get-and-count/")
     @Headers("Content-Type: application/json")
     boolean getAndCount();
 
-    @RequestLine("GET /api/account-service/deliver-cash")
+    @RequestLine("GET /api/account-service/get-and-count/")
     @Headers("Content-Type: application/json")
-    boolean deliverCash();
+    boolean saveCV();
 
     @RequestLine("POST")
     @Headers("Content-Type: application/json")

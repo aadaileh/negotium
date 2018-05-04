@@ -28,6 +28,7 @@ public class ResumeComplete {
     private String skills;
     private String experience;
     private String prefferedJob;
+    private String photo;
 
     //contact_information
     private String email;
@@ -388,5 +389,13 @@ public class ResumeComplete {
 
     public void setLanguageLevel(String languageLevel) {
         this.languageLevel = languageLevel;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

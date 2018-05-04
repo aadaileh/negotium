@@ -24,7 +24,7 @@ public class MainServiceImplentationsTest {
 
     private final MainServiceImplentations cut = new MainServiceImplentations();
 
-    private User user = new User();
+    private final User user = new User();
     final static private String NAME = "bar";
     final static private String EMAIL = "foo";
     final static private String EMPLOYER = "foo";
@@ -39,6 +39,7 @@ public class MainServiceImplentationsTest {
     final static private String GENDER = "foo";
 
     @Mock
+    private
     DataSource dataSourceMock;
 
     @Mock

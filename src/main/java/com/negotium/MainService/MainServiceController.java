@@ -96,8 +96,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Boolean confirm(@PathVariable String code) throws SQLException {
 
-        Boolean credentialsId = mainServiceImplentations.confirm(code);
-        return credentialsId;
+        return mainServiceImplentations.confirm(code);
     }
 
     /**
@@ -117,8 +116,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public User login(@RequestBody Credentials credentials) throws SQLException {
-        User user = mainServiceImplentations.verifyCredentials(credentials);
-        return user;
+        return mainServiceImplentations.verifyCredentials(credentials);
     }
 
     /**
@@ -161,8 +159,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvPersonalInformation(@RequestBody PersonalInformation personalInformation) throws SQLException {
-        Response response = mainServiceImplentations.saveCvPersonalInformation(personalInformation);
-        return response;
+        return mainServiceImplentations.saveCvPersonalInformation(personalInformation);
     }
 
     /**
@@ -182,8 +179,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvContactInformation(@RequestBody ContactInformation contactInformation) throws SQLException {
-        Response response = mainServiceImplentations.saveCvContactInformation(contactInformation);
-        return response;
+        return mainServiceImplentations.saveCvContactInformation(contactInformation);
     }
 
     /**
@@ -203,8 +199,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvWorkExperience(@RequestBody WorkExperience workExperience) throws SQLException {
-        Response response = mainServiceImplentations.saveCvWorkExperience(workExperience);
-        return response;
+        return mainServiceImplentations.saveCvWorkExperience(workExperience);
     }
 
     /**
@@ -224,8 +219,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvEducation(@RequestBody Education education) throws SQLException {
-        Response response = mainServiceImplentations.saveCvEducation(education);
-        return response;
+        return mainServiceImplentations.saveCvEducation(education);
     }
 
     /**
@@ -245,8 +239,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvLanguage(@RequestBody Language language) throws SQLException {
-        Response response = mainServiceImplentations.saveCvLanguage(language);
-        return response;
+        return mainServiceImplentations.saveCvLanguage(language);
     }
 
 
@@ -267,8 +260,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public Response saveCvReference(@RequestBody Reference reference) throws SQLException {
-        Response response = mainServiceImplentations.saveCvReference(reference);
-        return response;
+        return mainServiceImplentations.saveCvReference(reference);
     }
 
     /**
@@ -288,8 +280,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public ArrayList<Resume> search(@RequestBody SearchCriteria searchCriteria) throws SQLException {
-        ArrayList<Resume> resumes = mainServiceImplentations.search(searchCriteria);
-        return resumes;
+        return mainServiceImplentations.search(searchCriteria);
     }
 
     /**
@@ -309,8 +300,7 @@ public class MainServiceController extends DatabaseFactoryAbstract implements Ma
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 406, message = "Not Acceptable. Validation of data failed.")})
     public ResumeComplete getCv(@PathVariable int id) throws SQLException {
-        ResumeComplete cv = mainServiceImplentations.getCv(id);
-        return cv;
+        return mainServiceImplentations.getCv(id);
     }
 
     @ExceptionHandler

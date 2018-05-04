@@ -1,7 +1,5 @@
 package com.negotium.DTOs;
 
-import java.sql.Blob;
-
 /**
  * <h1>Data Transfer Object: CV Headers</h1>
  *

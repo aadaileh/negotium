@@ -1,7 +1,5 @@
 package com.negotium.DTOs;
 
-import java.util.ArrayList;
-
 /**
  * <h1>Data Transfer Object: Response</h1>
  *

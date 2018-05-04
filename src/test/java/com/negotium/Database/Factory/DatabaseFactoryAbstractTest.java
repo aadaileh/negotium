@@ -6,11 +6,6 @@ import org.junit.Test;
 public class DatabaseFactoryAbstractTest {
 
 
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
     @Test
     public void getDataSource() {
     }

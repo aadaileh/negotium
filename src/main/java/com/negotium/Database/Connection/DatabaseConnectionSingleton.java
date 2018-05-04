@@ -4,8 +4,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLException;
-
 /**
  * <h1>Database Connection Singleton</h1>
  *
@@ -21,7 +19,7 @@ import java.sql.SQLException;
 @Component
 public class DatabaseConnectionSingleton {
 
-    private static DatabaseConnectionSingleton databaseConnectionSingleton = new DatabaseConnectionSingleton();
+    private static final DatabaseConnectionSingleton databaseConnectionSingleton = new DatabaseConnectionSingleton();
     private String dbUrl;
     private String username;
     private String password;
@@ -45,7 +43,7 @@ public class DatabaseConnectionSingleton {
         this.password = password;
     }
 
-    public javax.sql.DataSource dataSource() throws SQLException {
+    public javax.sql.DataSource dataSource() {
         if (dbUrl == null || dbUrl.isEmpty()) {
             return new HikariDataSource();
         } else {

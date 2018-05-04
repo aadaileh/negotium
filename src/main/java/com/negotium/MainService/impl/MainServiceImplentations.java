@@ -41,9 +41,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param user users data
      * @return users data enhanced with additional info (token)
-     * @throws SQLException
-     *
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -84,9 +81,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param code the confirmation code send via email
      * @return TRUE or FALSE
-     * @throws SQLException
-     *
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -101,11 +95,7 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
             Statement stmt = connection.createStatement();
 
             Long credentialsId = selectConfirmationCodeId(connection, code);
-            if (credentialsId.equals(null)) {
-                return false;
-            }
-
-            return true;
+            return !credentialsId.equals(null);
 
         } catch (Exception e) {
 
@@ -126,8 +116,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param credentials username/card-id and password/pin
      * @return user the enhanced user object
-     *
-     * @throws SQLException
      *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
@@ -189,8 +177,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param header all header section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -232,8 +218,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param personalInformation all Personal Information section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -277,8 +261,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param contactInformation all Contact Information section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -321,8 +303,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param workExperience all work experience section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -365,8 +345,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param education all education section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -409,8 +387,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param language all header section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -453,8 +429,6 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
      *
      * @param reference all reference section's fields
      * @return response contains all Ids of sections
-     * @throws SQLException
-     *
      * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
      * @version 1.0
      * @since   16.04.2018
@@ -741,6 +715,7 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
                 resumeComplete.setSkills(CVResultSet.getString("skills"));
                 resumeComplete.setExperience(CVResultSet.getString("experience"));
                 resumeComplete.setPrefferedJob(CVResultSet.getString("preffered_job"));
+                resumeComplete.setPhoto(CVResultSet.getString("photo"));
             }
             CVResultSet.close();
 
@@ -914,7 +889,7 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
     }
 
 
-    private Long selectConfirmationCodeId(Connection connection, String code) throws SQLException {
+    private Long selectConfirmationCodeId(Connection connection, String code) {
 
         ResultSet resultSet = null;
         Statement statement = null;
@@ -1168,7 +1143,7 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
     }
 
 
-    private User getAllIds (Statement statement, User user) throws SQLException {
+    private User getAllIds (Statement statement, User user) {
 
         try {
             String CIsql = "SELECT * FROM contact_information WHERE cv_id = '" + user.getCvId() + "';";
@@ -1209,7 +1184,7 @@ public class MainServiceImplentations extends DatabaseFactoryAbstract {
     }
 
 
-    private int getContactInformationId (Statement statement, int usersId) throws SQLException {
+    private int getContactInformationId (Statement statement, int usersId) {
 
         int ciId = 0;
         try {

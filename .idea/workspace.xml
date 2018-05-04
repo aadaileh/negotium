@@ -2,15 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e08361e-908a-4240-97a8-4dea569d8519" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Connection/DatabaseConnectionSingleton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Factory/CommonFactoryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/negotium/DTOs/AccountTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/negotium/Services/Main/impl/MainServiceImplentationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/negotium/countries.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/negotium/inc/pdf_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/negotium/inc/pdf_class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/negotium/inc/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/negotium/inc/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/negotium/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/negotium/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/negotium/pdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/negotium/pdf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SwaggerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SwaggerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +36,7 @@
     <SUITE FILE_PATH="coverage/NEGOTIUM$MainServiceImplentationsTest_registerUser.ic" NAME="MainServiceImplentationsTest.registerUser Coverage Results" MODIFIED="1525250633071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.negotium.Services.Main.impl.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/NEGOTIUM$NegotiumApplication.ic" NAME="NegotiumApplication Coverage Results" MODIFIED="1524862246719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/NEGOTIUM$NegotiumApplication.ic" NAME="NegotiumApplication Coverage Results" MODIFIED="1525347411829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.negotium.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/NEGOTIUM$MainServiceImplentationsTest_registerUserTest.ic" NAME="MainServiceImplentationsTest.registerUserTest Coverage Results" MODIFIED="1525254006345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -33,20 +45,25 @@
     <SUITE FILE_PATH="coverage/NEGOTIUM$MainServiceImplentationsTest.ic" NAME="MainServiceImplentationsTest Coverage Results" MODIFIED="1525252653265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.negotium.Services.Main.impl.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/NEGOTIUM$All_in_negotium.ic" NAME="All in negotium Coverage Results" MODIFIED="1525347435779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
     <option name="myFlattenPackages" value="true" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\ahmed\Documents\Ahmed\master\Software Quality Engineering\Assignements\part2\application\backend\CodeCoverage" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="NEGOTIUM" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainServiceController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainServiceController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="-272">
+              <caret line="61" column="51" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -54,13 +71,11 @@
       <file leaf-file-name="MainServiceImplentations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+            <state relative-caret-position="17">
+              <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#11462#11471#0" expanded="true" />
-                <element signature="e#40479#40480#0" expanded="true" />
-                <element signature="e#40523#40524#0" expanded="true" />
+                <element signature="docComment;class#MainServiceImplentations#0" />
+                <element signature="docComment;method#registerUser#0;class#MainServiceImplentations#0" />
               </folding>
             </state>
           </provider>
@@ -69,44 +84,87 @@
       <file leaf-file-name="SecurityConfiguration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NegotiumApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/NegotiumApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseConnectionSingleton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java">
+      <file leaf-file-name="PersonalInformation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/PersonalInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="153">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding>
+                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseFactoryAbstractTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java">
+      <file leaf-file-name="Reference.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Reference.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="136">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+              <folding>
+                <element signature="e#1242#1243#0" expanded="true" />
+                <element signature="e#1270#1271#0" expanded="true" />
+                <element signature="e#1450#1451#0" expanded="true" />
+                <element signature="e#1488#1489#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseConnectionSingletonTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java">
+      <file leaf-file-name="Response.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="153">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReflectiveCallable.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+      <file leaf-file-name="Language.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Language.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="153">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding>
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#683#684#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#755#756#0" expanded="true" />
+                <element signature="e#783#784#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainServiceInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,21 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Field.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/FundTransferResponse.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/negotium/Clients/FeignClientTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/PersonalInformation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ContactInformation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/WorkExperience.java" />
@@ -198,10 +241,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/impl/MainServiceImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Resume.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Services/Main/MainServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Factory/CommonFactoryAbstract.java" />
@@ -215,6 +256,23 @@
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Database/DatabaseFactoryAbstract.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SwaggerConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/NegotiumApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java" />
       </list>
     </option>
   </component>
@@ -250,8 +308,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -284,6 +343,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="negotium" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NEGOTIUM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="negotium" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="negotium" type="462c0819:PsiDirectoryNode" />
+              <item name="Clients" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NEGOTIUM" type="b2602c69:ProjectViewProjectNode" />
@@ -357,7 +425,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,7 +432,9 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CodeCoverage" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -411,6 +480,23 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="All in negotium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negotium" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="DatabaseConnectionSingletonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="negotium" />
@@ -481,29 +567,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="MainServiceImplentationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="negotium" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.negotium.Services.Main.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.negotium.Services.Main.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.negotium.Services.Main.impl.MainServiceImplentationsTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -544,18 +607,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.NegotiumApplication" />
-      <item itemvalue="JUnit.MainServiceImplentationsTest" />
       <item itemvalue="JUnit.MainServiceControllerTest" />
       <item itemvalue="JUnit.DatabaseConnectionSingletonTest.dataSource" />
       <item itemvalue="JUnit.DatabaseConnectionSingletonTest" />
+      <item itemvalue="JUnit.All in negotium" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NegotiumApplication" />
+        <item itemvalue="JUnit.All in negotium" />
         <item itemvalue="JUnit.DatabaseConnectionSingletonTest" />
         <item itemvalue="JUnit.DatabaseConnectionSingletonTest.dataSource" />
         <item itemvalue="JUnit.MainServiceControllerTest" />
-        <item itemvalue="JUnit.MainServiceImplentationsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -573,12 +636,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainServiceControllerTest - 2018.05.02 at 12h 57m 30s.xml">
-      <configuration name="MainServiceControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainServiceControllerTest - 2018.05.02 at 13h 00m 03s.xml">
-      <configuration name="MainServiceControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainServiceControllerTest - 2018.05.02 at 13h 00m 17s.xml">
       <configuration name="MainServiceControllerTest" configurationId="JUnit" />
     </history-entry>
@@ -603,14 +660,21 @@
     <history-entry file="DatabaseConnectionSingletonTest - 2018.05.03 at 09h 20m 52s.xml">
       <configuration name="DatabaseConnectionSingletonTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DatabaseConnectionSingletonTest_dataSource - 2018.05.03 at 09h 30m 12s.xml">
+      <configuration name="DatabaseConnectionSingletonTest.dataSource" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_negotium - 2018.05.03 at 13h 37m 20s.xml">
+      <configuration name="All in negotium" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="1" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Application Servers" order="11" />
+      <window_info anchor="bottom" id="Application Servers" order="11" weight="0.32905984" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.3295302" />
       <window_info id="Capture Tool" order="9" />
       <window_info id="Designer" order="5" />
@@ -627,58 +691,60 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.42022792" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.26912752" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.22550336" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32905984" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.23221476" />
       <window_info anchor="right" id="Google Cloud Storage" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="7" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32905984" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="right" id="FAQ Robot" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24966443" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.32193732" />
+      <window_info active="true" anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.49395972" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="DB Execution Console" order="1" />
+      <window_info anchor="bottom" id="Console" order="1" />
+      <window_info anchor="bottom" id="Application Servers" order="12" />
       <window_info id="Designer" order="5" />
-      <window_info anchor="right" id="Palette" order="10" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.36752138" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.38319087" />
+      <window_info anchor="right" id="Palette" order="9" />
+      <window_info id="Image Layers" order="8" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.42022792" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="DB Browser" order="0" weight="0.3295302" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Project Explorer" order="1" weight="0.3295302" />
       <window_info id="Favorites" order="7" side_tool="true" weight="0.3295302" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32905984" />
       <window_info id="Capture Tool" order="9" />
-      <window_info anchor="right" id="Google Cloud Storage" order="6" />
-      <window_info anchor="right" id="Commander" order="2" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.24966443" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.1932886" />
-      <window_info anchor="bottom" id="Application Servers" order="11" />
+      <window_info anchor="right" id="Google Cloud Storage" order="5" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.6680912" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.22885907" />
       <window_info id="Job Explorer" order="2" weight="0.3295302" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.3295302" />
-      <window_info anchor="right" id="FAQ Robot" order="1" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.3295302" />
+      <window_info anchor="right" id="FAQ Robot" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32905984" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.24966443" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32905984" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info id="Image Layers" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="bottom" id="Console" order="0" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.26912752" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.4031339" />
-      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info active="true" anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.49395972" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32905984" />
+      <window_info anchor="bottom" id="DB Execution Console" order="2" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -794,6 +860,13 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -826,20 +899,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Account/AccountServiceController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Credentials.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Authentication/AuthenticationServiceController.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -850,13 +909,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Services/Authentication/impl/AuthenticationServiceImplentations.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Services/Authentication/AuthenticationServiceControllerTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/NegotiumApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/PDF/cv.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/SearchCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -872,19 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/PersonalInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ContactInformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -896,139 +935,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="20" column="30" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="30" />
-          <folding>
-            <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Education.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Reference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#1242#1243#0" expanded="true" />
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="e#1450#1451#0" expanded="true" />
-            <element signature="e#1488#1489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Envelope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Language.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#604#605#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#683#684#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#859#860#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Clients/FeignClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
-          <folding>
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1305#1306#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
-          <folding>
-            <element signature="e#2931#2932#0" expanded="true" />
-            <element signature="e#2960#2961#0" expanded="true" />
-            <element signature="e#3336#3337#0" expanded="true" />
-            <element signature="e#3384#3385#0" expanded="true" />
-            <element signature="e#3553#3554#0" expanded="true" />
-            <element signature="e#3582#3583#0" expanded="true" />
-            <element signature="e#4003#4004#0" expanded="true" />
-            <element signature="e#4032#4033#0" expanded="true" />
-            <element signature="e#5014#5015#0" expanded="true" />
-            <element signature="e#5056#5057#0" expanded="true" />
-            <element signature="e#5478#5479#0" expanded="true" />
-            <element signature="e#5518#5519#0" expanded="true" />
-            <element signature="e#5919#5920#0" expanded="true" />
-            <element signature="e#5948#5949#0" expanded="true" />
-            <element signature="e#8027#8028#0" expanded="true" />
-            <element signature="e#8058#8059#0" expanded="true" />
-            <element signature="e#8106#8107#0" expanded="true" />
-            <element signature="e#8146#8147#0" expanded="true" />
-            <element signature="e#8186#8187#0" expanded="true" />
-            <element signature="e#8222#8223#0" expanded="true" />
-            <element signature="e#8280#8281#0" expanded="true" />
-            <element signature="e#8330#8331#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/middleware/negotium/confirm.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Account.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Envelope.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Field.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Clients/FeignClientTest.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -1036,23 +949,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1114">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Resume.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#563#564#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1070,45 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1184#1185#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#1275#1276#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
-            <element signature="e#1531#1532#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1640#1641#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1764#1765#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1875#1876#0" expanded="true" />
-            <element signature="e#1920#1921#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
-            <element signature="e#2000#2001#0" expanded="true" />
-            <element signature="e#2039#2040#0" expanded="true" />
-            <element signature="e#2100#2101#0" expanded="true" />
-            <element signature="e#2156#2157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.0.14.RELEASE/spring-security-oauth2-2.0.14.RELEASE.jar!/org/springframework/security/oauth2/provider/token/UserAuthenticationConverter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1116,23 +977,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Services/Main/MainServiceControllerTest.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/DTOs/AccountTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/ResumeComplete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4063">
+          <caret line="393" column="30" selection-start-line="393" selection-start-column="30" selection-end-line="393" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SwaggerConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="106" column="22" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Credentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Education.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Clients/FeignClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Header.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Language.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11462#11471#0" expanded="true" />
-            <element signature="e#40479#40480#0" expanded="true" />
-            <element signature="e#40523#40524#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Services/Main/MainServiceControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/PersonalInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding>
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/NegotiumApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/DTOs/Reference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/impl/MainServiceImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="97" column="41" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+          <folding>
+            <element signature="docComment;class#MainServiceImplentations#0" />
+            <element signature="docComment;method#registerUser#0;class#MainServiceImplentations#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1141,71 +1157,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/MainService/MainServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/MainService/impl/MainServiceImplentationsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="185" lean-forward="true" selection-start-line="185" selection-end-line="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SwaggerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="48" column="70" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Configuration/SecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Database/Factory/DatabaseFactoryAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/negotium/Database/Connection/DatabaseConnectionSingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Factory/DatabaseFactoryAbstractTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/DTOs/AccountTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/negotium/Database/Connection/DatabaseConnectionSingletonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="-272">
+          <caret line="61" column="51" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="51" />
         </state>
       </provider>
     </entry>
